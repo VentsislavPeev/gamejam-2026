@@ -1,9 +1,10 @@
 ## The Vision
 
 You piece together ancient masks. Each fragment grants a unique ability, and combined masks unlock devastating elemental or mechanical synergies.
+
 ## Key Features
 
-- Dynamic Mask Crafting: Mix and match top, bottom, and side fragments to create unique visual and mechanical combos.
+- Dynamic Mask Crafting: Mix and match top, bottom, and side fragments to create unique visual and mechanical combos
 
 - Pixel-Perfect Chaos: Hand-crafted pixel art with Godot’s high-performance 2D engine handling hundreds of on-screen entities.
 
@@ -12,15 +13,15 @@ You piece together ancient masks. Each fragment grants a unique ability, and com
 ## Eventual Project Structure
 
 - assets/
-  - sprites/      # Mask fragments, enemies, environment
-  - audio/        # SFX and music
-  - themes/       # UI styling
+  - sprites/ # Mask fragments, enemies, environment
+  - audio/ # SFX and music
+  - themes/ # UI styling
 - src/
-  - actors/       # Player, Enemy base classes
-  - masks/        # Fragment data & combination logic
-  - levels/       # World maps and spawning logic
-  - ui/           # HUD and Mask Crafting menu
- project.godot
+  - actors/ # Player, Enemy base classes
+  - masks/ # Fragment data & combination logic
+  - levels/ # World maps and spawning logic
+  - ui/ # HUD and Mask Crafting menu
+    project.godot
 
 ## Getting Started
 
