@@ -21,12 +21,12 @@ You piece together ancient masks. Each fragment grants a unique ability, and com
   - masks/ # Fragment data & combination logic
   - levels/ # World maps and spawning logic
   - ui/ # HUD and Mask Crafting menu
-    project.godot
+	project.godot
 
 ## Getting Started
 
-    Clone the repo: git clone [your-link-here]
+	Clone the repo: git clone [your-link-here]
 
-    Open Godot 4.6: Import the project.godot file.
+	Open Godot 4.6: Import the project.godot file.
 
-    Play: Press F5 to start the survivor mayhem.
+	Play: Press F5 to start the survivor mayhem.
