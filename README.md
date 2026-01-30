@@ -10,7 +10,7 @@ You piece together ancient masks. Each fragment grants a unique ability, and com
 
 - Fragment Synergies: Combining the Obsidian Eye with the Jagged Jaw might create a "Volcanic Bite" effect.
 
-## Eventual Project Structure
+## Eventual Project Structurjgdrtdtxftgugue
 
 - assets/
   - sprites/ # Mask fragments, enemies, environment
