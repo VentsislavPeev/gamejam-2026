@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://20so5ch5wfim"]
 
 [ext_resource type="PackedScene" uid="uid://jpjfaslv1u0t" path="res://src/actors/player.tscn" id="1_8iqbf"]
+[ext_resource type="PackedScene" uid="uid://e6dlfmgfl0mr" path="res://src/actors/obstacle.tscn" id="2_a210u"]
 
 [node name="Game" type="Node2D" unique_id=1953090852]
 y_sort_enabled = true
@@ -16,3 +17,6 @@ offset_bottom = 1085.0
 
 [node name="Player" parent="." unique_id=700692499 instance=ExtResource("1_8iqbf")]
 position = Vector2(962, 547)
+
+[node name="StaticBody2D" parent="." unique_id=1033802667 instance=ExtResource("2_a210u")]
+position = Vector2(575, 474)
