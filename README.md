@@ -1,6 +1,6 @@
 ## The Vision
 
-You piece together ancient masks. Each fragment grants a unique ability, and combined mask unlock devastating elemental or mechanical synergies.
+You piece together ancient masks. Each fragment grants a unique ability, and combined masks unlock devastating elemental or mechanical synergies.
 ## Key Features
 
 - Dynamic Mask Crafting: Mix and match top, bottom, and side fragments to create unique visual and mechanical combos.
