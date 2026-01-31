@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cibsiyuinnvre" path="res://assets/sprites/arrow.png" id="2_tnxhk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ihssc"]
-radius = 14.0
+radius = 22.090721
 
 [node name="Projectile" type="Area2D" unique_id=785173866]
 top_level = true
@@ -19,7 +19,7 @@ scale = Vector2(0.1906844, 0.21339993)
 texture = ExtResource("2_tnxhk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2104062900]
-position = Vector2(66, -1)
+position = Vector2(51, -4)
 shape = SubResource("CircleShape2D_ihssc")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

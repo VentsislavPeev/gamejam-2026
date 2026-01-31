@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://iel5ifxs32tr" path="res://assets/sprites/bow.png" id="2_m15pl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m15pl"]
-radius = 795.68463
+radius = 721.034
 
 [node name="Weapon" type="Area2D" unique_id=940212508]
 collision_layer = 0
@@ -26,7 +26,7 @@ flip_h = true
 
 [node name="ShootingPoint" type="Marker2D" parent="WeaponPivot/Sprite2D" unique_id=603117877]
 unique_name_in_owner = true
-position = Vector2(38.161514, -24.166931)
+position = Vector2(-97.52379, 34.091267)
 
 [node name="Timer" type="Timer" parent="." unique_id=1088804324]
 wait_time = 0.3
