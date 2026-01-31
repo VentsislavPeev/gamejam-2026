@@ -1,10 +1,49 @@
 [gd_scene format=3 uid="uid://dryvukmawshgm"]
 
 [ext_resource type="Script" uid="uid://bom08qyh7fouy" path="res://src/actors/projectile.gd" id="1_pmvnu"]
-[ext_resource type="Texture2D" uid="uid://cibsiyuinnvre" path="res://assets/sprites/arrow.png" id="2_tnxhk"]
+[ext_resource type="Texture2D" uid="uid://c50nxrl3243el" path="res://assets/sprites/arrows.png" id="3_tnxhk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_op4vv"]
+atlas = ExtResource("3_tnxhk")
+region = Rect2(0, 5, 16, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmvnu"]
+atlas = ExtResource("3_tnxhk")
+region = Rect2(0, 24, 17, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdkmj"]
+atlas = ExtResource("3_tnxhk")
+region = Rect2(0, 0, 16, 4)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b2qyr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_op4vv")
+}],
+"loop": true,
+"name": &"earth_arrow",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmvnu")
+}],
+"loop": true,
+"name": &"fire_arrow",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdkmj")
+}],
+"loop": true,
+"name": &"normal_arrow",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ihssc"]
-radius = 22.090721
+radius = 15.0
 
 [node name="Projectile" type="Area2D" unique_id=785173866]
 top_level = true
@@ -12,14 +51,15 @@ collision_layer = 0
 collision_mask = 3
 script = ExtResource("1_pmvnu")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1587449347]
-position = Vector2(-7.0000076, -5.999999)
-rotation = 0.8209295
-scale = Vector2(0.1906844, 0.21339993)
-texture = ExtResource("2_tnxhk")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1971582084]
+position = Vector2(7, -4.7683716e-07)
+scale = Vector2(7.411765, 7.125001)
+sprite_frames = SubResource("SpriteFrames_b2qyr")
+animation = &"normal_arrow"
+autoplay = "normal_arrow"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2104062900]
-position = Vector2(51, -4)
+position = Vector2(52, -3)
 shape = SubResource("CircleShape2D_ihssc")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

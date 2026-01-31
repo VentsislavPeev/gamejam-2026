@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bbo7hwjyvwya4"]
 
 [ext_resource type="Script" uid="uid://du71s6lwv6s8r" path="res://src/actors/weapon.gd" id="1_m15pl"]
-[ext_resource type="Texture2D" uid="uid://iel5ifxs32tr" path="res://assets/sprites/bow.png" id="2_m15pl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m15pl"]
 radius = 721.034
@@ -21,7 +20,6 @@ rotation = -0.2617994
 position = Vector2(90.83408, 16.463284)
 rotation = 0.2617994
 scale = Vector2(0.23583983, 0.22314453)
-texture = ExtResource("2_m15pl")
 flip_h = true
 
 [node name="ShootingPoint" type="Marker2D" parent="WeaponPivot/Sprite2D" unique_id=603117877]
@@ -29,7 +27,9 @@ unique_name_in_owner = true
 position = Vector2(-97.52379, 34.091267)
 
 [node name="Timer" type="Timer" parent="." unique_id=1088804324]
-wait_time = 0.3
+wait_time = 0.5
 autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Timer" unique_id=763224400]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
