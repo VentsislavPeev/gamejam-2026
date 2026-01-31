@@ -2,8 +2,10 @@ extends Area2D
 
 @onready var player = get_node("/root/Game/Player")
 @onready var sprite = $AnimatedSprite2D
+@onready var projectile = $"."
 
 var travel_distance = 0
+var count_hit = 0;
 
 func _physics_process(delta: float):
 	if(player.earth_mask):
@@ -33,14 +35,18 @@ func _physics_process(delta: float):
 	#sprite.play("normal_arrow")
 
 func _on_body_entered(body: Node2D) -> void:
-	queue_free()
 	if(player.earth_mask && body.has_method("take_dmg")):
-		player.health += 1;
 		print(player.health)
 		body.take_dmg()
+		sprite.scale *= 0.7
+		count_hit += 1
+		if count_hit == 3:
+			queue_free()
 		
 	elif (player.fire_mask && body.has_method("take_fire_dmg")):
 		body.take_dmg()
 		body.take_fire_dmg()
+		queue_free()
 	elif body.has_method("take_dmg"):
 		body.take_dmg()
+		queue_free()

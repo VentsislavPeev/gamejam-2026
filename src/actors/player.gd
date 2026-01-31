@@ -3,8 +3,8 @@ extends CharacterBody2D
 @onready var animated_sprite = $AnimatedSprite2D
 var health = 100
 
-var earth_mask = false;
-var fire_mask = true;
+var earth_mask = true;
+var fire_mask = false;
 var lightning_mask = false;
 
 func _physics_process(delta: float):
