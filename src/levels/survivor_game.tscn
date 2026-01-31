@@ -13,6 +13,81 @@ _data = {
 }
 point_count = 5
 
+[sub_resource type="GDScript" id="GDScript_gkphq"]
+script/source = "# UI.gd (CanvasLayer) - СВЪРЗАНО ВСИЧКО!
+extends CanvasLayer
+class_name GameUI
+
+@onready var pause_ui: Control = $PauseUI
+@onready var game_over_ui: Control = $GameOverUI
+@onready var score_label: Label = $ScoreLabel
+@onready var health_bar: ProgressBar = $HealthBar
+@onready var time_label: Label = $TimeLabel
+@onready var game_over_score_label: Label = $GameOverUI/ScoreLabel
+@onready var ambience_loop: AudioStreamPlayer = $IdleMenuSound
+
+var score: int = 0
+var current_health: int = 100
+
+signal resume_game  # За GameScene
+signal retry_game
+signal quit_game
+
+func _ready():
+	# 🔥 ВСИЧКИ БУТОНИ ТУК!
+	pause_ui.get_node(\"ContinueButton\").pressed.connect(_on_resume)
+	pause_ui.get_node(\"RetryButton\").pressed.connect(_on_pause_retry)
+	pause_ui.get_node(\"QuitButton\").pressed.connect(_on_pause_quit)
+	
+	game_over_ui.get_node(\"RetryButton\").pressed.connect(_on_game_over_retry)
+	game_over_ui.get_node(\"QuitButton\").pressed.connect(_on_game_over_quit)
+	
+	# Start скрито
+	pause_ui.visible = false
+	game_over_ui.visible = false
+
+# 🔥 PUBLIC - GameScene вика
+func update_score(new_score: int):
+	score = new_score
+	score_label.text = \"Score: %d\" % score
+
+func update_time(time_left: float):
+	time_label.text = \"Time: %d:%02d\" % [int(time_left/60), int(time_left)%60]
+
+func update_health(new_health: int):
+	current_health = new_health
+	health_bar.value = current_health
+
+func toggle_pause():
+	Engine.time_scale = 1.0 if pause_ui.visible else 0.0
+	pause_ui.visible = !pause_ui.visible
+	if pause_ui.visible:
+		ambience_loop.play()
+
+func show_game_over():
+	Engine.time_scale = 0.0
+	game_over_ui.visible = true
+	game_over_score_label.text = \"Final Score: %d\" % score
+	ambience_loop.play()
+
+# 🔥 PRIVATE - само бутони
+func _on_resume():
+	resume_game.emit()  # GameScene чува
+	toggle_pause()
+
+func _on_pause_retry():
+	retry_game.emit()
+
+func _on_pause_quit():
+	quit_game.emit()
+
+func _on_game_over_retry():
+	retry_game.emit()
+
+func _on_game_over_quit():
+	quit_game.emit()
+"
+
 [node name="Game" type="Node2D" unique_id=1953090852]
 y_sort_enabled = true
 script = ExtResource("1_75kf4")
@@ -50,7 +125,9 @@ position = Vector2(575, 474)
 wait_time = 0.5
 autostart = true
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=987971650]
+[node name="UI" type="CanvasLayer" parent="." unique_id=596854622]
+script = SubResource("GDScript_gkphq")
+metadata/_custom_type_script = "uid://b6kf6kdiqtbth"
 
 [node name="ScoreLabel" type="Label" parent="UI" unique_id=724628742]
 visible = false
@@ -96,12 +173,13 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 horizontal_alignment = 1
 
 [node name="PauseUI" type="Control" parent="UI" unique_id=766487381]
+process_mode = 3
 visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-mouse_filter = 2
+mouse_filter = 1
 
 [node name="ContinueButton" type="Button" parent="UI/PauseUI" unique_id=1978072766]
 layout_mode = 0
@@ -188,14 +266,14 @@ theme_override_fonts/font = ExtResource("4_75kf4")
 theme_override_font_sizes/font_size = 64
 text = "QUIT"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UI" unique_id=708606697]
+[node name="IdleMenuSound" type="AudioStreamPlayer" parent="UI" unique_id=708606697]
 stream = ExtResource("5_fv1l1")
 
 [node name="Clock" type="Timer" parent="." unique_id=1349216900]
 wait_time = 90.0
 one_shot = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=155929245]
+[node name="ThemeMusic" type="AudioStreamPlayer" parent="." unique_id=155929245]
 stream = ExtResource("6_gkphq")
 autoplay = true
 

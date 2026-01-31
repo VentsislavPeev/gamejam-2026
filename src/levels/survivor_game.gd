@@ -14,7 +14,6 @@ var game_active: bool = true
 @onready var game_over_ui: Control = $UI/GameOverUI
 @onready var game_over_score_label: Label = $UI/GameOverUI/ScoreLabel
 
-@onready var ambience_loop = $UI/AudioStreamPlayer
 
 func _ready() -> void:
 	
@@ -34,8 +33,7 @@ func spawn_mob():
 
 func _on_timer_timeout():
 	spawn_mob()
-	
-	
+	   
 func _input(event: InputEvent) -> void:
 	if game_active and Input.is_action_just_pressed("ui_cancel"):  # ESC
 		toggle_pause()
@@ -50,12 +48,10 @@ func _process(delta: float) -> void:
 		# TODO: take_damage(20) при hit
 
 func toggle_pause() -> void:
-	ambience_loop.play()
 	get_tree().paused = !get_tree().paused
 	pause_ui.visible = get_tree().paused
 
 func game_over() -> void:
-	ambience_loop.play()
 	game_active = false
 	get_tree().paused = true
 	game_over_ui.visible = true

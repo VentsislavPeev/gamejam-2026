@@ -126,7 +126,7 @@ stream_1/stream = ExtResource("6_higb3")
 stream_2/stream = ExtResource("7_6axsv")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4tn5t"]
-streams_count = 3
+streams_count = 6
 stream_0/stream = ExtResource("8_q1eoc")
 stream_1/stream = ExtResource("9_higb3")
 stream_2/stream = ExtResource("10_6axsv")
