@@ -44,7 +44,6 @@ func update_segments(center: Vector2):
 	
 	# 2. Spawn new segments
 	for coord in needed_coords:
-		print('spawned at new coords',coord)
 		if not active_segments.has(coord):
 			spawn_segment(coord)
 

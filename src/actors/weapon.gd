@@ -5,7 +5,6 @@ extends Area2D
 func _physics_process(delta: float):
 	look_at(get_global_mouse_position())
 	
-	
 func shoot():
 	shooting.play()
 	const PROJECTILE = preload("res://src/actors/projectile.tscn")

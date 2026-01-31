@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://befxiwpl8v5h2"]
 
-[ext_resource type="PackedScene" uid="uid://jpjfaslv1u0t" path="res://src/actors/player.tscn" id="1_8iqbf"]
-[ext_resource type="PackedScene" uid="uid://cpq728pdgjtsk" path="res://assets/themes/test_bg.tscn" id="3_h101p"]
+[ext_resource type="PackedScene" uid="uid://dypcdmkbf2y1b" path="res://src/actors/player.tscn" id="1_8iqbf"]
 [ext_resource type="Script" uid="uid://tpk0kiobwpv5" path="res://src/levels/survivor_game.gd" id="1_75kf4"]
 [ext_resource type="PackedScene" uid="uid://e6dlfmgfl0mr" path="res://src/actors/obstacle.tscn" id="2_a210u"]
+[ext_resource type="PackedScene" uid="uid://cpq728pdgjtsk" path="res://assets/themes/test_bg.tscn" id="3_h101p"]
 [ext_resource type="FontFile" uid="uid://bs4ww54t7be0" path="res://themes/fonts/Xolonium-Regular.ttf" id="4_75kf4"]
 [ext_resource type="AudioStream" uid="uid://c2mpintshhkcq" path="res://audio/sfx/ambiance_loop.wav" id="5_fv1l1"]
 [ext_resource type="AudioStream" uid="uid://du6qnhxx4m27i" path="res://audio/music/theme.wav" id="6_gkphq"]
@@ -96,8 +96,6 @@ script = ExtResource("1_75kf4")
 [node name="Player" parent="." unique_id=700692499 instance=ExtResource("1_8iqbf")]
 position = Vector2(962, 547)
 
-[node name="MapChunk" parent="." unique_id=736343852 instance=ExtResource("3_h101p")]
-z_index = -189
 [node name="Path2D" type="Path2D" parent="Player" unique_id=288922034]
 position = Vector2(-1231.5059, -691.01056)
 scale = Vector2(1.1696703, 1.2135849)
@@ -111,6 +109,9 @@ progress = 482.46
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player" unique_id=1242742083]
 
+[node name="MapChunk" parent="." unique_id=736343852 instance=ExtResource("3_h101p")]
+z_index = -189
+
 [node name="StaticBody2D" parent="." unique_id=1033802667 instance=ExtResource("2_a210u")]
 position = Vector2(575, 474)
 
@@ -120,7 +121,6 @@ autostart = true
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=596854622]
 script = SubResource("GDScript_gkphq")
-metadata/_custom_type_script = "uid://b6kf6kdiqtbth"
 
 [node name="ScoreLabel" type="Label" parent="UI" unique_id=724628742]
 visible = false
