@@ -105,6 +105,93 @@ stream_1/stream = ExtResource("6_l3h4q")
 stream_2/stream = ExtResource("7_urqtb")
 
 [node name="Player" type="CharacterBody2D" unique_id=700692499]
+[sub_resource type="AtlasTexture" id="AtlasTexture_urqtb"]
+atlas = ExtResource("2_xk21n")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqefw"]
+atlas = ExtResource("2_xk21n")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bs0b"]
+atlas = ExtResource("2_xk21n")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uticr"]
+atlas = ExtResource("2_xk21n")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnob4"]
+atlas = ExtResource("2_xk21n")
+region = Rect2(0, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xk21n"]
+atlas = ExtResource("2_foe4e")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1oxso"]
+atlas = ExtResource("2_foe4e")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1e0ww"]
+atlas = ExtResource("2_foe4e")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8py6"]
+atlas = ExtResource("2_foe4e")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l3h4q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3h4q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urqtb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqefw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bs0b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uticr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnob4")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xk21n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1oxso")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1e0ww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8py6")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_urqtb"]
+radius = 31.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_foe4e"]
+radius = 34.0147
+
+[node name="Player" type="CharacterBody2D" unique_id=700692499 groups=["player"]]
+z_index = 1
 script = ExtResource("1_gdh0h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=693606667]
@@ -134,6 +221,6 @@ position = Vector2(6, -34)
 shape = SubResource("CircleShape2D_foe4e")
 debug_color = Color(0.9969434, 0, 0.18584156, 0.41960785)
 
-[node name="Footsteps" type="AudioStreamPlayer" parent="." unique_id=1704644573]
-stream = SubResource("AudioStreamRandomizer_wqefw")
-volume_db = 24.0
+[node name="ItemDuration" type="Timer" parent="." unique_id=1578621819]
+
+[connection signal="timeout" from="ItemDuration" to="." method="_on_item_duration_timeout"]

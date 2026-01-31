@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://befxiwpl8v5h2"]
 
-[ext_resource type="PackedScene" uid="uid://dypcdmkbf2y1b" path="res://src/actors/player.tscn" id="1_8iqbf"]
+[ext_resource type="PackedScene" uid="uid://jpjfaslv1u0t" path="res://src/actors/player.tscn" id="1_8iqbf"]
+[ext_resource type="PackedScene" uid="uid://cpq728pdgjtsk" path="res://assets/themes/test_bg.tscn" id="3_h101p"]
 [ext_resource type="Script" uid="uid://tpk0kiobwpv5" path="res://src/levels/survivor_game.gd" id="1_75kf4"]
 [ext_resource type="PackedScene" uid="uid://e6dlfmgfl0mr" path="res://src/actors/obstacle.tscn" id="2_a210u"]
 [ext_resource type="FontFile" uid="uid://bs4ww54t7be0" path="res://themes/fonts/Xolonium-Regular.ttf" id="4_75kf4"]
@@ -92,19 +93,11 @@ func _on_game_over_quit():
 y_sort_enabled = true
 script = ExtResource("1_75kf4")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2088222880]
-layer = -10
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=277204152]
-offset_left = -4127.0
-offset_top = -2272.0
-offset_right = 5684.3867
-offset_bottom = 2712.0
-color = Color(0.8490121, 0.4831671, 0.010991523, 1)
-
 [node name="Player" parent="." unique_id=700692499 instance=ExtResource("1_8iqbf")]
 position = Vector2(962, 547)
 
+[node name="MapChunk" parent="." unique_id=736343852 instance=ExtResource("3_h101p")]
+z_index = -189
 [node name="Path2D" type="Path2D" parent="Player" unique_id=288922034]
 position = Vector2(-1231.5059, -691.01056)
 scale = Vector2(1.1696703, 1.2135849)
