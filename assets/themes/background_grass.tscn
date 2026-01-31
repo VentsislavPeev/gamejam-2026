@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dh1meocdqq7j2"]
+
+[ext_resource type="Texture2D" uid="uid://j01r3sakloei" path="res://assets/sprites/grass.png" id="1_2ljwu"]
+
+[node name="Parallax2D" type="Parallax2D" unique_id=2083946949]
+repeat_size = Vector2(64, 64)
+repeat_times = 31
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1928416258]
+position = Vector2(960, 540)
+scale = Vector2(4, 4)
+texture = ExtResource("1_2ljwu")
