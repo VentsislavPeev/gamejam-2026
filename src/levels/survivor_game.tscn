@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://20so5ch5wfim"]
 
 [ext_resource type="PackedScene" uid="uid://jpjfaslv1u0t" path="res://src/actors/player.tscn" id="1_8iqbf"]
-[ext_resource type="PackedScene" uid="uid://e6dlfmgfl0mr" path="res://src/actors/obstacle.tscn" id="2_a210u"]
 [ext_resource type="PackedScene" uid="uid://cpq728pdgjtsk" path="res://assets/themes/test_bg.tscn" id="3_h101p"]
 
 [node name="Game" type="Node2D" unique_id=1953090852]
@@ -10,9 +9,5 @@ y_sort_enabled = true
 [node name="Player" parent="." unique_id=700692499 instance=ExtResource("1_8iqbf")]
 position = Vector2(962, 547)
 
-[node name="StaticBody2D" parent="." unique_id=1033802667 instance=ExtResource("2_a210u")]
-position = Vector2(575, 474)
-
 [node name="MapChunk" parent="." unique_id=736343852 instance=ExtResource("3_h101p")]
 z_index = -189
-position = Vector2(11, -125)
