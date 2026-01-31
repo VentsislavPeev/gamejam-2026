@@ -14,7 +14,7 @@ func _physics_process(delta: float):
 	else: animated_sprite.flip_h = false;
 	velocity = direction * 600
 	move_and_slide()
-
+	
 	const DMG_RATE = 5.0
 	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
 	if overlapping_mobs.size() > 0:
@@ -28,4 +28,3 @@ func _physics_process(delta: float):
 func keep_max_health():
 	if health > 100:
 		health = 100
-		
