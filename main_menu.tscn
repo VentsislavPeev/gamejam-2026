@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://cu5gn48pkvjt0"]
+
+[ext_resource type="Script" uid="uid://y1pdmtjps3l5" path="res://main_menu.gd" id="1_06t4h"]
+[ext_resource type="FontFile" uid="uid://bs4ww54t7be0" path="res://fonts/Xolonium-Regular.ttf" id="2_7vrkn"]
+
+[node name="start_menu" type="CanvasLayer" unique_id=168847085]
+script = ExtResource("1_06t4h")
+
+[node name="StartButton" type="Button" parent="." unique_id=331403646]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -117.0
+offset_top = -148.0
+offset_right = 127.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_7vrkn")
+theme_override_font_sizes/font_size = 64
+text = "START"
+
+[node name="Message" type="Label" parent="." unique_id=195303928]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -168.0
+offset_right = 240.0
+offset_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_7vrkn")
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="MessageTimer" type="Timer" parent="." unique_id=1022815596]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]

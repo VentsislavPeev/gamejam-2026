@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://d1x5vo3dxw28x"]
+
+[node name="MainMenu" type="Control" unique_id=2142535864]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TitleLable" type="Label" parent="." unique_id=1188893701]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="StartButton" type="Button" parent="." unique_id=1894846106]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
