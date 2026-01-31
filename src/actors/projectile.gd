@@ -20,7 +20,6 @@ func _physics_process(delta: float):
 	
 	var direction = Vector2.RIGHT.rotated(rotation)
 	position += direction * SPEED * delta
-	
 	travel_distance += SPEED * delta
 	if travel_distance > RANGE:
 		queue_free()

@@ -4,6 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://bhias57le6m6s" path="res://assets/sprites/e3_walk_anim.png" id="2_c3s2l"]
 [ext_resource type="Texture2D" uid="uid://b26r6opfkfu7o" path="res://assets/sprites/e3_walk_fire_anim.png" id="2_pdfo5"]
 [ext_resource type="Texture2D" uid="uid://io2da64j4rwy" path="res://assets/sprites/e3_death_anim.png" id="3_gf0sm"]
+[ext_resource type="AudioStream" uid="uid://dlm8biaaxqq1m" path="res://audio/sfx/enemy_kill_1.wav" id="5_q1eoc"]
+[ext_resource type="AudioStream" uid="uid://ck8pkjthxq34i" path="res://audio/sfx/enemy_kill_2.wav" id="6_higb3"]
+[ext_resource type="AudioStream" uid="uid://bfnuefs4loscq" path="res://audio/sfx/enemy_kill_3.wav" id="7_6axsv"]
+[ext_resource type="AudioStream" uid="uid://d31npex0anpq0" path="res://audio/sfx/arrow_fire_layer_1.wav" id="8_q1eoc"]
+[ext_resource type="AudioStream" uid="uid://cnscvphdni872" path="res://audio/sfx/arrow_fire_layer_2.wav" id="9_higb3"]
+[ext_resource type="AudioStream" uid="uid://0y68y1m0kmld" path="res://audio/sfx/arrow_fire_layer_3.wav" id="10_6axsv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pdfo5"]
 radius = 71.99
@@ -113,6 +119,18 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7ed8l"]
+streams_count = 3
+stream_0/stream = ExtResource("5_q1eoc")
+stream_1/stream = ExtResource("6_higb3")
+stream_2/stream = ExtResource("7_6axsv")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4tn5t"]
+streams_count = 6
+stream_0/stream = ExtResource("8_q1eoc")
+stream_1/stream = ExtResource("9_higb3")
+stream_2/stream = ExtResource("10_6axsv")
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1077009339 groups=["enemies"]]
 collision_layer = 2
 collision_mask = 2
@@ -138,5 +156,12 @@ debug_color = Color(0.81233174, 0.18923193, 0.8859302, 0.41960785)
 position = Vector2(12, -36.000008)
 scale = Vector2(6.546875, 6.546875)
 sprite_frames = SubResource("SpriteFrames_xwthg")
-animation = &"death"
+animation = &"burning"
 autoplay = "default"
+
+[node name="EnemyKill" type="AudioStreamPlayer" parent="AnimatedSprite2D" unique_id=1932111570]
+stream = SubResource("AudioStreamRandomizer_7ed8l")
+volume_db = -10.0
+
+[node name="BurnEnemy" type="AudioStreamPlayer" parent="AnimatedSprite2D" unique_id=612284900]
+stream = SubResource("AudioStreamRandomizer_4tn5t")

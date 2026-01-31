@@ -10,8 +10,7 @@ var active_segments = {}
 
 func _ready():
 	update_segments(Vector2.ZERO)
-
-func _process(_delta):
+	
 	if not player:
 		var found_nodes = get_tree().get_nodes_in_group("player")
 		if found_nodes.size() > 0:
@@ -29,8 +28,8 @@ func _process(_delta):
 func update_segments(center: Vector2):
 	# We look at the 3x3 grid surrounding the center
 	var needed_coords = []
-	for x in range(center.x - 10, center.x + 12):
-		for y in range(center.y - 10, center.y + 12):
+	for x in range(center.x - 10, center.x + 10):a
+		for y in range(center.y - 10, center.y + 10):
 			needed_coords.append(Vector2(x, y))
 
 	# 1. Cleanup old segments
