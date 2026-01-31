@@ -123,3 +123,7 @@ collision_mask = 2
 position = Vector2(6, -34)
 shape = SubResource("CircleShape2D_foe4e")
 debug_color = Color(0.9969434, 0, 0.18584156, 0.41960785)
+
+[node name="ItemDuration" type="Timer" parent="." unique_id=1578621819]
+
+[connection signal="timeout" from="ItemDuration" to="." method="_on_item_duration_timeout"]
