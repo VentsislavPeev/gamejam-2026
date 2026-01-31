@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bbo7hwjyvwya4"]
 
 [ext_resource type="Script" uid="uid://du71s6lwv6s8r" path="res://src/actors/weapon.gd" id="1_m15pl"]
+[ext_resource type="AudioStream" uid="uid://btj660njucrjp" path="res://audio/sfx/char_shoot_basic.wav" id="2_m15pl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m15pl"]
 radius = 721.034
@@ -31,5 +32,9 @@ wait_time = 0.5
 autostart = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Timer" unique_id=763224400]
+
+[node name="CharShoot" type="AudioStreamPlayer" parent="." unique_id=1456921369]
+stream = ExtResource("2_m15pl")
+volume_db = 20.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

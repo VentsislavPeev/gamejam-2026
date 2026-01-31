@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://btt1dag0mg6ki"]
+
+[ext_resource type="FontFile" uid="uid://bs4ww54t7be0" path="res://themes/fonts/Xolonium-Regular.ttf" id="1_jlntk"]
+[ext_resource type="AudioStream" uid="uid://c2mpintshhkcq" path="res://audio/sfx/ambiance_loop.wav" id="2_qemve"]
+
+[node name="UI" type="CanvasLayer" unique_id=773741441]
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=1654623688]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -194.0
+offset_right = 6.0
+offset_bottom = 100.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_jlntk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=65148028]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -201.0
+offset_top = -25.0
+offset_right = -1.0
+offset_bottom = 25.0
+grow_horizontal = 0
+grow_vertical = 2
+value = 100.0
+
+[node name="TimeLabel" type="Label" parent="." unique_id=1061084679]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -100.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+
+[node name="PauseUI" type="Control" parent="." unique_id=2035455018]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ContinueButton" type="Button" parent="PauseUI" unique_id=420159895]
+layout_mode = 0
+offset_left = 847.0
+offset_top = 313.0
+offset_right = 1047.0
+offset_bottom = 413.0
+text = "CONTINUE"
+
+[node name="RetryButton" type="Button" parent="PauseUI" unique_id=1883465140]
+layout_mode = 0
+offset_left = 847.0
+offset_top = 437.0
+offset_right = 1047.0
+offset_bottom = 537.0
+text = "RETRY"
+
+[node name="QuitButton" type="Button" parent="PauseUI" unique_id=1861324924]
+layout_mode = 0
+offset_left = 849.0
+offset_top = 565.0
+offset_right = 1049.0
+offset_bottom = 665.0
+text = "QUIT"
+
+[node name="GameOverUI" type="Control" parent="." unique_id=88456323]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GameOverLabel" type="Label" parent="GameOverUI" unique_id=2114135381]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 711.0
+offset_top = 86.0
+offset_right = 1111.0
+offset_bottom = 245.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_jlntk")
+theme_override_font_sizes/font_size = 64
+text = "YOU LOST!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="GameOverUI" unique_id=375938154]
+layout_mode = 0
+offset_left = 848.0
+offset_top = 297.0
+offset_right = 1048.0
+offset_bottom = 397.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_jlntk")
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RetryButton" type="Button" parent="GameOverUI" unique_id=1053952539]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 693.0
+offset_right = 768.0
+offset_bottom = 893.0
+theme_override_fonts/font = ExtResource("1_jlntk")
+theme_override_font_sizes/font_size = 64
+text = "RETRY"
+
+[node name="QuitButton" type="Button" parent="GameOverUI" unique_id=2135070576]
+layout_mode = 0
+offset_left = 1199.0
+offset_top = 706.0
+offset_right = 1599.0
+offset_bottom = 906.0
+theme_override_fonts/font = ExtResource("1_jlntk")
+theme_override_font_sizes/font_size = 64
+text = "QUIT"
+
+[node name="IdleMenuSound" type="AudioStreamPlayer" parent="." unique_id=2134977197]
+stream = ExtResource("2_qemve")
+volume_db = 24.0

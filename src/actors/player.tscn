@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://djhef1csd7f6w" path="res://assets/sprites/mc_walk_anim.png" id="2_foe4e"]
 [ext_resource type="Texture2D" uid="uid://c2j48yydjuv8o" path="res://assets/sprites/mc_bow_anim.png" id="2_xk21n"]
 [ext_resource type="PackedScene" uid="uid://bbo7hwjyvwya4" path="res://src/actors/weapon.tscn" id="3_foe4e"]
+[ext_resource type="AudioStream" uid="uid://blbu451fx1nth" path="res://audio/sfx/fs_dirt_1.wav" id="5_d8py6"]
+[ext_resource type="AudioStream" uid="uid://bygdhq6ctxhfo" path="res://audio/sfx/fs_dirt_2.wav" id="6_l3h4q"]
+[ext_resource type="AudioStream" uid="uid://bqtqompro81c6" path="res://audio/sfx/fs_dirt_3.wav" id="7_urqtb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l3h4q"]
 atlas = ExtResource("2_xk21n")
@@ -94,9 +97,12 @@ radius = 31.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_foe4e"]
 radius = 34.0147
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_urqtb"]
-atlas = ExtResource("2_xk21n")
-region = Rect2(0, 32, 32, 32)
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wqefw"]
+playback_mode = 2
+streams_count = 3
+stream_0/stream = ExtResource("5_d8py6")
+stream_1/stream = ExtResource("6_l3h4q")
+stream_2/stream = ExtResource("7_urqtb")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wqefw"]
 atlas = ExtResource("2_xk21n")
