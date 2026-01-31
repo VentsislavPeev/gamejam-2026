@@ -35,7 +35,7 @@ progress = 482.46
 position = Vector2(575, 474)
 
 [node name="Timer" type="Timer" parent="." unique_id=185791145]
-wait_time = 0.3
+wait_time = 0.5
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
