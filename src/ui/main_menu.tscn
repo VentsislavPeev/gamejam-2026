@@ -34,5 +34,6 @@ theme_override_fonts/font = ExtResource("2_7vrkn")
 theme_override_font_sizes/font_size = 64
 text = "START"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1427332533]
+[node name="IdleMenuSound" type="AudioStreamPlayer" parent="." unique_id=1427332533]
 stream = ExtResource("3_f0s2b")
+autoplay = true
