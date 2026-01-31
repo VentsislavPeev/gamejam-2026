@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://dypcdmkbf2y1b"]
 
-[ext_resource type="Script" path="res://src/actors/player.gd" id="1_gdh0h"]
+[ext_resource type="Script" uid="uid://cwbcmtiybcum4" path="res://src/actors/player.gd" id="1_gdh0h"]
 [ext_resource type="Texture2D" uid="uid://2lnvoac2dqgb" path="res://assets/sprites/square.png" id="1_iairh"]
+[ext_resource type="PackedScene" uid="uid://bbo7hwjyvwya4" path="res://src/actors/weapon.tscn" id="3_foe4e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gdh0h"]
 size = Vector2(83, 81)
@@ -19,3 +20,6 @@ position = Vector2(2.5, 0.5)
 shape = SubResource("RectangleShape2D_gdh0h")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=470462921]
+
+[node name="Weapon" parent="." unique_id=940212508 instance=ExtResource("3_foe4e")]
+position = Vector2(0, -1)

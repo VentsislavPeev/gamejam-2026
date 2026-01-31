@@ -3,11 +3,14 @@
 [ext_resource type="Script" uid="uid://rrn8xd3mdgrw" path="res://src/actors/enemy.gd" id="1_c3s2l"]
 [ext_resource type="Texture2D" uid="uid://bgds7dvsd2m7k" path="res://assets/sprites/33830.png" id="1_lyeno"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s2xkk"]
-radius = 22.0
-height = 72.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_pdfo5"]
+radius = 57.07889
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1077009339]
+[sub_resource type="CircleShape2D" id="CircleShape2D_c3s2l"]
+radius = 332.20023
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1077009339 groups=["enemies"]]
+safe_margin = 0.8
 script = ExtResource("1_c3s2l")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1471034643]
@@ -16,5 +19,13 @@ scale = Vector2(0.18711656, 0.15733333)
 texture = ExtResource("1_lyeno")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=634576994]
+visibility_layer = 0
 position = Vector2(-29, 0)
-shape = SubResource("CapsuleShape2D_s2xkk")
+shape = SubResource("CircleShape2D_pdfo5")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1415632549]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=913270941]
+light_mask = 0
+visibility_layer = 2
+shape = SubResource("CircleShape2D_c3s2l")

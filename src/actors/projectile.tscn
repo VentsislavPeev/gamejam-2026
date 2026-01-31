@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dryvukmawshgm"]
+
+[ext_resource type="Script" uid="uid://bom08qyh7fouy" path="res://src/actors/projectile.gd" id="1_pmvnu"]
+[ext_resource type="Texture2D" uid="uid://cibsiyuinnvre" path="res://assets/sprites/arrow.png" id="2_tnxhk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ihssc"]
+radius = 14.0
+
+[node name="Projectile" type="Area2D" unique_id=785173866]
+top_level = true
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_pmvnu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1587449347]
+position = Vector2(-7.0000076, -5.999999)
+rotation = 0.8209295
+scale = Vector2(0.1906844, 0.21339993)
+texture = ExtResource("2_tnxhk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2104062900]
+position = Vector2(66, -1)
+shape = SubResource("CircleShape2D_ihssc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
