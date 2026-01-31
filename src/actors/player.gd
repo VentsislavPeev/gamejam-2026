@@ -29,3 +29,10 @@ func keep_max_health():
 	if health > 100:
 		health = 100
 		
+func on_item_pickup():
+	$ItemDuration.start()
+	# make the buffs, change speed, make speed constant in the
+	# player script for easier change, add defense, etc
+	
+func _on_item_duration_timeout() -> void:
+	pass # remove buffs
