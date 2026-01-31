@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dypcdmkbf2y1b" path="res://src/actors/player.tscn" id="1_8iqbf"]
 [ext_resource type="Script" uid="uid://tpk0kiobwpv5" path="res://src/levels/survivor_game.gd" id="1_75kf4"]
 [ext_resource type="PackedScene" uid="uid://e6dlfmgfl0mr" path="res://src/actors/obstacle.tscn" id="2_a210u"]
+[ext_resource type="FontFile" uid="uid://bs4ww54t7be0" path="res://fonts/Xolonium-Regular.ttf" id="4_75kf4"]
 
 [sub_resource type="Curve2D" id="Curve2D_h101p"]
 _data = {
@@ -18,10 +19,17 @@ script = ExtResource("1_75kf4")
 layer = -10
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=277204152]
-offset_left = -14.0
-offset_top = -10.0
-offset_right = 1934.0
-offset_bottom = 1085.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -974.0
+offset_top = -547.5
+offset_right = 974.0
+offset_bottom = 547.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Player" parent="." unique_id=700692499 instance=ExtResource("1_8iqbf")]
 position = Vector2(962, 547)
@@ -44,4 +52,147 @@ position = Vector2(575, 474)
 wait_time = 0.3
 autostart = true
 
+[node name="UI" type="CanvasLayer" parent="." unique_id=987971650]
+
+[node name="ScoreLabel" type="Label" parent="UI" unique_id=724628742]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -194.0
+offset_right = 6.0
+offset_bottom = 100.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_75kf4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthBar" type="ProgressBar" parent="UI" unique_id=961743940]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -201.0
+offset_top = -25.0
+offset_right = -1.0
+offset_bottom = 25.0
+grow_horizontal = 0
+grow_vertical = 2
+value = 100.0
+
+[node name="TimeLabel" type="Label" parent="UI" unique_id=445538193]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -100.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+
+[node name="PauseUI" type="Control" parent="UI" unique_id=766487381]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ContinueButton" type="Button" parent="UI/PauseUI" unique_id=1978072766]
+layout_mode = 0
+offset_left = 847.0
+offset_top = 313.0
+offset_right = 1047.0
+offset_bottom = 413.0
+text = "CONTINUE"
+
+[node name="RetryButton" type="Button" parent="UI/PauseUI" unique_id=132135339]
+layout_mode = 0
+offset_left = 847.0
+offset_top = 437.0
+offset_right = 1047.0
+offset_bottom = 537.0
+text = "RETRY"
+
+[node name="QuitButton" type="Button" parent="UI/PauseUI" unique_id=265264190]
+layout_mode = 0
+offset_left = 849.0
+offset_top = 565.0
+offset_right = 1049.0
+offset_bottom = 665.0
+text = "QUIT"
+
+[node name="GameOverUI" type="Control" parent="UI" unique_id=1519574285]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GameOverLabel" type="Label" parent="UI/GameOverUI" unique_id=1713464495]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 711.0
+offset_top = 86.0
+offset_right = 1111.0
+offset_bottom = 245.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_75kf4")
+theme_override_font_sizes/font_size = 64
+text = "YOU LOST!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="UI/GameOverUI" unique_id=1136809407]
+layout_mode = 0
+offset_left = 848.0
+offset_top = 297.0
+offset_right = 1048.0
+offset_bottom = 397.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_75kf4")
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RetryButton" type="Button" parent="UI/GameOverUI" unique_id=735714347]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 693.0
+offset_right = 768.0
+offset_bottom = 893.0
+theme_override_fonts/font = ExtResource("4_75kf4")
+theme_override_font_sizes/font_size = 64
+text = "RETRY"
+
+[node name="QuitButton" type="Button" parent="UI/GameOverUI" unique_id=688181617]
+layout_mode = 0
+offset_left = 1199.0
+offset_top = 706.0
+offset_right = 1599.0
+offset_bottom = 906.0
+theme_override_fonts/font = ExtResource("4_75kf4")
+theme_override_font_sizes/font_size = 64
+text = "QUIT"
+
+[node name="Clock" type="Timer" parent="." unique_id=1349216900]
+wait_time = 90.0
+one_shot = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="UI/PauseUI/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="UI/PauseUI/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="UI/PauseUI/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="UI/GameOverUI/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="UI/GameOverUI/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="timeout" from="Clock" to="." method="_on_clock_timeout"]

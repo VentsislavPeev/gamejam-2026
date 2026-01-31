@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://cu5gn48pkvjt0"]
+
+[ext_resource type="Script" uid="uid://y1pdmtjps3l5" path="res://src/ui/main_menu.gd" id="1_06t4h"]
+[ext_resource type="FontFile" uid="uid://bs4ww54t7be0" path="res://fonts/Xolonium-Regular.ttf" id="2_7vrkn"]
+
+[node name="MainMenu" type="Control" unique_id=507938451]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_06t4h")
+
+[node name="TitleLable" type="Label" parent="." unique_id=1463334359]
+layout_mode = 1
+offset_left = 485.0
+offset_top = 222.0
+offset_right = 1519.0
+offset_bottom = 539.0
+theme_override_fonts/font = ExtResource("2_7vrkn")
+theme_override_font_sizes/font_size = 100
+text = "Beat The Clock!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="StartButton" type="Button" parent="." unique_id=1832483906]
+layout_mode = 0
+offset_left = 829.0
+offset_top = 758.0
+offset_right = 1129.0
+offset_bottom = 908.0
+theme_override_fonts/font = ExtResource("2_7vrkn")
+theme_override_font_sizes/font_size = 64
+text = "START"
