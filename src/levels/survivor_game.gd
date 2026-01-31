@@ -14,6 +14,8 @@ var game_active: bool = true
 @onready var game_over_ui: Control = $UI/GameOverUI
 @onready var game_over_score_label: Label = $UI/GameOverUI/ScoreLabel
 
+@onready var ambience_loop = $UI/AudioStreamPlayer
+
 func _ready() -> void:
 	
 	# Hide health bar initially? No, show during game
@@ -48,10 +50,12 @@ func _process(delta: float) -> void:
 		# TODO: take_damage(20) при hit
 
 func toggle_pause() -> void:
+	ambience_loop.play()
 	get_tree().paused = !get_tree().paused
 	pause_ui.visible = get_tree().paused
 
 func game_over() -> void:
+	ambience_loop.play()
 	game_active = false
 	get_tree().paused = true
 	game_over_ui.visible = true
@@ -72,13 +76,17 @@ func _on_continue_button_pressed() -> void:
 	toggle_pause()
 
 
-func _on_retry_button_pressed() -> void:
-	get_tree().reload_current_scene()
-
-
 func _on_quit_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://src/ui/main_menu.tscn")
 
 
 func _on_clock_timeout() -> void:
 	game_over()
+
+
+func _on_pause_retry_button_pressed() -> void:
+	get_tree().reload_current_scene()
+
+
+func _on_quit_retry_button_pressed() -> void:
+	get_tree().reload_current_scene()

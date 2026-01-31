@@ -3,7 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://dypcdmkbf2y1b" path="res://src/actors/player.tscn" id="1_8iqbf"]
 [ext_resource type="Script" uid="uid://tpk0kiobwpv5" path="res://src/levels/survivor_game.gd" id="1_75kf4"]
 [ext_resource type="PackedScene" uid="uid://e6dlfmgfl0mr" path="res://src/actors/obstacle.tscn" id="2_a210u"]
-[ext_resource type="FontFile" uid="uid://bs4ww54t7be0" path="res://fonts/Xolonium-Regular.ttf" id="4_75kf4"]
+[ext_resource type="FontFile" uid="uid://bs4ww54t7be0" path="res://themes/fonts/Xolonium-Regular.ttf" id="4_75kf4"]
+[ext_resource type="AudioStream" uid="uid://c2mpintshhkcq" path="res://audio/sfx/ambiance_loop.wav" id="5_fv1l1"]
+[ext_resource type="AudioStream" uid="uid://du6qnhxx4m27i" path="res://audio/music/theme.wav" id="6_gkphq"]
 
 [sub_resource type="Curve2D" id="Curve2D_h101p"]
 _data = {
@@ -45,6 +47,8 @@ position = Vector2(380.45853, -113.06363)
 rotation = -0.0022045819
 progress = 482.46
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player" unique_id=1242742083]
+
 [node name="StaticBody2D" parent="." unique_id=1033802667 instance=ExtResource("2_a210u")]
 position = Vector2(575, 474)
 
@@ -55,6 +59,7 @@ autostart = true
 [node name="UI" type="CanvasLayer" parent="." unique_id=987971650]
 
 [node name="ScoreLabel" type="Label" parent="UI" unique_id=724628742]
+visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -68,6 +73,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HealthBar" type="ProgressBar" parent="UI" unique_id=961743940]
+visible = false
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
@@ -82,6 +88,7 @@ grow_vertical = 2
 value = 100.0
 
 [node name="TimeLabel" type="Label" parent="UI" unique_id=445538193]
+visible = false
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -100,6 +107,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 
 [node name="ContinueButton" type="Button" parent="UI/PauseUI" unique_id=1978072766]
 layout_mode = 0
@@ -131,6 +139,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 
 [node name="GameOverLabel" type="Label" parent="UI/GameOverUI" unique_id=1713464495]
 layout_mode = 1
@@ -185,14 +194,21 @@ theme_override_fonts/font = ExtResource("4_75kf4")
 theme_override_font_sizes/font_size = 64
 text = "QUIT"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UI" unique_id=708606697]
+stream = ExtResource("5_fv1l1")
+
 [node name="Clock" type="Timer" parent="." unique_id=1349216900]
 wait_time = 90.0
 one_shot = true
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=155929245]
+stream = ExtResource("6_gkphq")
+autoplay = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="UI/PauseUI/ContinueButton" to="." method="_on_continue_button_pressed"]
-[connection signal="pressed" from="UI/PauseUI/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="UI/PauseUI/RetryButton" to="." method="_on_pause_retry_button_pressed"]
 [connection signal="pressed" from="UI/PauseUI/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="UI/GameOverUI/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="UI/GameOverUI/RetryButton" to="." method="_on_quit_retry_button_pressed"]
 [connection signal="pressed" from="UI/GameOverUI/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="timeout" from="Clock" to="." method="_on_clock_timeout"]

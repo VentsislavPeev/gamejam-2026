@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://cu5gn48pkvjt0"]
 
 [ext_resource type="Script" uid="uid://y1pdmtjps3l5" path="res://src/ui/main_menu.gd" id="1_06t4h"]
-[ext_resource type="FontFile" uid="uid://bs4ww54t7be0" path="res://fonts/Xolonium-Regular.ttf" id="2_7vrkn"]
+[ext_resource type="FontFile" uid="uid://bs4ww54t7be0" path="res://themes/fonts/Xolonium-Regular.ttf" id="2_7vrkn"]
+[ext_resource type="AudioStream" uid="uid://c2mpintshhkcq" path="res://audio/sfx/ambiance_loop.wav" id="3_f0s2b"]
 
 [node name="MainMenu" type="Control" unique_id=507938451]
 layout_mode = 3
@@ -32,3 +33,6 @@ offset_bottom = 908.0
 theme_override_fonts/font = ExtResource("2_7vrkn")
 theme_override_font_sizes/font_size = 64
 text = "START"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1427332533]
+stream = ExtResource("3_f0s2b")

@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://vwth4b377lp6"]
+
+[ext_resource type="Script" path="res://src/actors/weapon.gd" id="1_m15pl"]
+[ext_resource type="AudioStream" uid="uid://btj660njucrjp" path="res://audio/sfx/char_shoot_basic.wav" id="2_m15pl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m15pl"]
+radius = 721.034
+
+[node name="Weapon" type="Area2D" unique_id=940212508]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_m15pl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1720917913]
+shape = SubResource("CircleShape2D_m15pl")
+
+[node name="WeaponPivot" type="Marker2D" parent="." unique_id=684864920]
+rotation = -0.2617994
+
+[node name="Sprite2D" type="Sprite2D" parent="WeaponPivot" unique_id=1717009671]
+position = Vector2(90.83408, 16.463284)
+rotation = 0.2617994
+scale = Vector2(0.23583983, 0.22314453)
+flip_h = true
+
+[node name="ShootingPoint" type="Marker2D" parent="WeaponPivot/Sprite2D" unique_id=603117877]
+unique_name_in_owner = true
+position = Vector2(-97.52379, 34.091267)
+
+[node name="shoot" type="AudioStreamPlayer" parent="WeaponPivot/Sprite2D" unique_id=534810260]
+stream = ExtResource("2_m15pl")
+
+[node name="Timer" type="Timer" parent="." unique_id=1088804324]
+wait_time = 0.5
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Timer" unique_id=763224400]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

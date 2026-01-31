@@ -1,21 +1,118 @@
 [gd_scene format=3 uid="uid://dypcdmkbf2y1b"]
 
-[ext_resource type="Script" path="res://src/actors/player.gd" id="1_gdh0h"]
-[ext_resource type="Texture2D" uid="uid://2lnvoac2dqgb" path="res://assets/sprites/square.png" id="1_iairh"]
+[ext_resource type="Script" uid="uid://cwbcmtiybcum4" path="res://src/actors/player.gd" id="1_gdh0h"]
+[ext_resource type="Texture2D" uid="uid://c2j48yydjuv8o" path="res://assets/sprites/mc_bow_anim.png" id="2_xk21n"]
+[ext_resource type="PackedScene" path="res://src/actors/weapon.tscn" id="3_foe4e"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gdh0h"]
-size = Vector2(83, 81)
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdh0h"]
+atlas = ExtResource("2_xk21n")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_foe4e"]
+atlas = ExtResource("2_xk21n")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3h4q"]
+atlas = ExtResource("2_xk21n")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urqtb"]
+atlas = ExtResource("2_xk21n")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqefw"]
+atlas = ExtResource("2_xk21n")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bs0b"]
+atlas = ExtResource("2_xk21n")
+region = Rect2(0, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xk21n"]
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1oxso"]
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1e0ww"]
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8py6"]
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l3h4q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdh0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_foe4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3h4q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urqtb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqefw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bs0b")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xk21n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1oxso")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1e0ww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8py6")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uticr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_foe4e"]
+radius = 34.0147
 
 [node name="Player" type="CharacterBody2D" unique_id=700692499]
 script = ExtResource("1_gdh0h")
 
-[node name="Square" type="Sprite2D" parent="." unique_id=1022679834]
-position = Vector2(4, 1)
-scale = Vector2(0.47727272, 0.47727272)
-texture = ExtResource("1_iairh")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=693606667]
+position = Vector2(0.9999924, -68)
+scale = Vector2(5.840909, 5.840909)
+sprite_frames = SubResource("SpriteFrames_l3h4q")
+animation = &"shoot"
+autoplay = "shoot"
+frame_progress = 0.6373727
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1976452109]
-position = Vector2(2.5, 0.5)
-shape = SubResource("RectangleShape2D_gdh0h")
+position = Vector2(5, -34)
+shape = SubResource("CapsuleShape2D_uticr")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=470462921]
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1547877909]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=229802242]
+position = Vector2(6, -34)
+shape = SubResource("CircleShape2D_foe4e")
+debug_color = Color(0.9969434, 0, 0.18584156, 0.41960785)
+
+[node name="Weapon" parent="." unique_id=940212508 instance=ExtResource("3_foe4e")]
