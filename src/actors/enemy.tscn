@@ -4,12 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://bgds7dvsd2m7k" path="res://assets/sprites/33830.png" id="1_lyeno"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pdfo5"]
-radius = 57.07889
+radius = 71.99
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c3s2l"]
 radius = 332.20023
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1077009339 groups=["enemies"]]
+collision_layer = 2
+collision_mask = 2
 safe_margin = 0.8
 script = ExtResource("1_c3s2l")
 
@@ -19,7 +21,8 @@ scale = Vector2(0.18711656, 0.15733333)
 texture = ExtResource("1_lyeno")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=634576994]
-visibility_layer = 0
+light_mask = 2
+visibility_layer = 2
 position = Vector2(-29, 0)
 shape = SubResource("CircleShape2D_pdfo5")
 
@@ -29,3 +32,4 @@ shape = SubResource("CircleShape2D_pdfo5")
 light_mask = 0
 visibility_layer = 2
 shape = SubResource("CircleShape2D_c3s2l")
+debug_color = Color(0.81233174, 0.18923193, 0.8859302, 0.41960785)
