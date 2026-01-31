@@ -104,11 +104,6 @@ stream_0/stream = ExtResource("5_d8py6")
 stream_1/stream = ExtResource("6_l3h4q")
 stream_2/stream = ExtResource("7_urqtb")
 
-[node name="Player" type="CharacterBody2D" unique_id=700692499]
-[sub_resource type="AtlasTexture" id="AtlasTexture_urqtb"]
-atlas = ExtResource("2_xk21n")
-region = Rect2(0, 32, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_wqefw"]
 atlas = ExtResource("2_xk21n")
 region = Rect2(0, 64, 32, 32)
