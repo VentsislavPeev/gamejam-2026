@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cibsiyuinnvre"
-path="res://.godot/imported/arrow.png-18e607c3398c94c410f88abf48695716.ctex"
+uid="uid://b26r6opfkfu7o"
+path="res://.godot/imported/e3_walk_fire_anim.png-0e188559c213b8dbf3a720851bc0656d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/arrow.png"
-dest_files=["res://.godot/imported/arrow.png-18e607c3398c94c410f88abf48695716.ctex"]
+source_file="res://assets/sprites/e3_walk_fire_anim.png"
+dest_files=["res://.godot/imported/e3_walk_fire_anim.png-0e188559c213b8dbf3a720851bc0656d.ctex"]
 
 [params]
 

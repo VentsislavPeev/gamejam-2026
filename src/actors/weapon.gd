@@ -1,7 +1,5 @@
 extends Area2D
 
-@onready var char_shoot_basic = $WeaponPivot/Sprite2D/shoot
-
 func _physics_process(delta: float):
 	look_at(get_global_mouse_position())
 	
@@ -16,4 +14,3 @@ func shoot():
 
 func _on_timer_timeout():
 	shoot()
-	char_shoot_basic.play()

@@ -1,7 +1,6 @@
-[gd_scene format=3 uid="uid://vwth4b377lp6"]
+[gd_scene format=3 uid="uid://bbo7hwjyvwya4"]
 
-[ext_resource type="Script" path="res://src/actors/weapon.gd" id="1_m15pl"]
-[ext_resource type="AudioStream" uid="uid://btj660njucrjp" path="res://audio/sfx/char_shoot_basic.wav" id="2_m15pl"]
+[ext_resource type="Script" uid="uid://du71s6lwv6s8r" path="res://src/actors/weapon.gd" id="1_m15pl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m15pl"]
 radius = 721.034
@@ -26,9 +25,6 @@ flip_h = true
 [node name="ShootingPoint" type="Marker2D" parent="WeaponPivot/Sprite2D" unique_id=603117877]
 unique_name_in_owner = true
 position = Vector2(-97.52379, 34.091267)
-
-[node name="shoot" type="AudioStreamPlayer" parent="WeaponPivot/Sprite2D" unique_id=534810260]
-stream = ExtResource("2_m15pl")
 
 [node name="Timer" type="Timer" parent="." unique_id=1088804324]
 wait_time = 0.5

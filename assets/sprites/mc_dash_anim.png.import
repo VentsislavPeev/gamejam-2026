@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cibsiyuinnvre"
-path="res://.godot/imported/arrow.png-18e607c3398c94c410f88abf48695716.ctex"
+uid="uid://dsj57l8ak6vud"
+path="res://.godot/imported/mc_dash_anim.png-1191d5dd00d953a39790f48df6155800.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/arrow.png"
-dest_files=["res://.godot/imported/arrow.png-18e607c3398c94c410f88abf48695716.ctex"]
+source_file="res://assets/sprites/mc_dash_anim.png"
+dest_files=["res://.godot/imported/mc_dash_anim.png-1191d5dd00d953a39790f48df6155800.ctex"]
 
 [params]
 

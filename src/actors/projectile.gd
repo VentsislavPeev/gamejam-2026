@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var player = $Game/Player
+@onready var player = get_node("/root/Game/Player")
 @onready var sprite = $AnimatedSprite2D
 
 var travel_distance = 0
@@ -10,7 +10,9 @@ func _physics_process(delta: float):
 		sprite.play("earth_arrow")
 	elif(player.fire_mask):
 		sprite.play("fire_arrow")
+	elif(player.fire_mask && player.earth_mask):pass
 	else: sprite.play("normal_arrow")
+	
 	const SPEED = 1000
 	const RANGE = 1200
 	
@@ -21,8 +23,14 @@ func _physics_process(delta: float):
 	if travel_distance > RANGE:
 		queue_free()
 
-
-
+#func earth_mask_effect():
+	#sprite.play("earth_arrow")
+#
+#func fire_mask_effect():
+	#sprite.play("fire_arrow")
+#
+#func fire_and_earth_mask():
+	#sprite.play("normal_arrow")
 
 func _on_body_entered(body: Node2D) -> void:
 	queue_free()
@@ -30,7 +38,7 @@ func _on_body_entered(body: Node2D) -> void:
 		player.health += 1;
 		print(player.health)
 		body.take_dmg()
-
+		
 	elif (player.fire_mask && body.has_method("take_fire_dmg")):
 		body.take_dmg()
 		body.take_fire_dmg()
