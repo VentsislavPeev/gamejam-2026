@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://d3qsl7ac58s4m"]
+
+[ext_resource type="Texture2D" uid="uid://bde3o8s0dyno2" path="res://assets/sprites/misc_terrain.png" id="1_ofmxu"]
+
+[node name="Sprite2D" type="Sprite2D" unique_id=202908553]
+z_index = 6
+z_as_relative = false
+y_sort_enabled = true
+texture = ExtResource("1_ofmxu")
+hframes = 2
+vframes = 2
+frame = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=736605081]
+modulate = Color(0.019607844, 0.019607844, 0.019607844, 0.47058824)
+z_index = 2
+z_as_relative = false
+position = Vector2(2.25247, 4.930569)
+scale = Vector2(1, 0.46050707)
+skew = 0.65100783
+texture = ExtResource("1_ofmxu")
+hframes = 2
+vframes = 2
+frame = 1
