@@ -28,7 +28,7 @@ func _ready():
 func update_segments(center: Vector2):
 	# We look at the 3x3 grid surrounding the center
 	var needed_coords = []
-	for x in range(center.x - 10, center.x + 10):a
+	for x in range(center.x - 10, center.x + 10):
 		for y in range(center.y - 10, center.y + 10):
 			needed_coords.append(Vector2(x, y))
 
