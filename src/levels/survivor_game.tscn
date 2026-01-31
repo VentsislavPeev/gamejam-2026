@@ -1,13 +1,41 @@
-[gd_scene format=3 uid="uid://20so5ch5wfim"]
+[gd_scene format=3 uid="uid://befxiwpl8v5h2"]
 
 [ext_resource type="PackedScene" uid="uid://jpjfaslv1u0t" path="res://src/actors/player.tscn" id="1_8iqbf"]
 [ext_resource type="PackedScene" uid="uid://cpq728pdgjtsk" path="res://assets/themes/test_bg.tscn" id="3_h101p"]
+[ext_resource type="Script" uid="uid://tpk0kiobwpv5" path="res://src/levels/survivor_game.gd" id="1_75kf4"]
+[ext_resource type="PackedScene" uid="uid://e6dlfmgfl0mr" path="res://src/actors/obstacle.tscn" id="2_a210u"]
+
+[sub_resource type="Curve2D" id="Curve2D_h101p"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -102, -112, 0, 0, 0, 0, 2166, -117, 0, 0, 0, 0, 2166, 1208, 0, 0, 0, 0, -109, 1193, 0, 0, 0, 0, -107, -87)
+}
+point_count = 5
 
 [node name="Game" type="Node2D" unique_id=1953090852]
 y_sort_enabled = true
+script = ExtResource("1_75kf4")
 
 [node name="Player" parent="." unique_id=700692499 instance=ExtResource("1_8iqbf")]
 position = Vector2(962, 547)
 
 [node name="MapChunk" parent="." unique_id=736343852 instance=ExtResource("3_h101p")]
 z_index = -189
+[node name="Path2D" type="Path2D" parent="Player" unique_id=288922034]
+position = Vector2(-1231.5059, -691.01056)
+scale = Vector2(1.1696703, 1.2135849)
+curve = SubResource("Curve2D_h101p")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D" unique_id=280690730]
+unique_name_in_owner = true
+position = Vector2(380.45853, -113.06363)
+rotation = -0.0022045819
+progress = 482.46
+
+[node name="StaticBody2D" parent="." unique_id=1033802667 instance=ExtResource("2_a210u")]
+position = Vector2(575, 474)
+
+[node name="Timer" type="Timer" parent="." unique_id=185791145]
+wait_time = 0.3
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

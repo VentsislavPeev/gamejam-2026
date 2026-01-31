@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dk4ekhtrs2fh2"]
+
+[ext_resource type="Script" uid="uid://rrn8xd3mdgrw" path="res://src/actors/enemy.gd" id="1_c3s2l"]
+[ext_resource type="Texture2D" uid="uid://bgds7dvsd2m7k" path="res://assets/sprites/33830.png" id="1_lyeno"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s2xkk"]
+radius = 22.0
+height = 72.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1077009339]
+script = ExtResource("1_c3s2l")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1471034643]
+position = Vector2(-19.000046, -2)
+scale = Vector2(0.18711656, 0.15733333)
+texture = ExtResource("1_lyeno")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=634576994]
+position = Vector2(-29, 0)
+shape = SubResource("CapsuleShape2D_s2xkk")
