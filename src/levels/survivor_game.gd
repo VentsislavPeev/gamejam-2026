@@ -1,7 +1,6 @@
 extends Node2D
 #note for self, make a separate spawn time scene
 #instead of using this script to control spawn
-var score: int = 0
 var max_health: int = 100
 var current_health: int = 100
 var elapsed := 0.0
@@ -89,7 +88,7 @@ func _input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	if game_active:
 		# Update UI
-		score_label.text = "Score: %d" % score
+		score_label.text = "Score: %d" % $Player.player_score
 		time_label.text = "Time: %d:%02d" % [int(timer.time_left / 60), int(timer.time_left) % 60]
 		if game_active:
 			elapsed += delta
@@ -107,7 +106,7 @@ func game_over() -> void:
 	game_active = false
 	get_tree().paused = true
 	game_over_ui.visible = true
-	game_over_score_label.text = "Final Score: %d" % score
+	game_over_score_label.text = "Final Score: %d" % $Player.player_score
 	# Също ако health <= 0: game_over()
 
 func take_damage(amount: int) -> void:
@@ -115,9 +114,6 @@ func take_damage(amount: int) -> void:
 	health_bar.value = current_health
 	if current_health <= 0:
 		game_over()
-
-func add_score(points: int) -> void:
-	score += points
 
 # Button functions
 func _on_continue_button_pressed() -> void:

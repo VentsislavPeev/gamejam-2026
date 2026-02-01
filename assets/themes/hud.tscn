@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://m3krdtdjmgdw" path="res://assets/sprites/dash_icon.png" id="12_7gjxc"]
 [ext_resource type="Texture2D" uid="uid://cwsvcou2f3vrf" path="res://assets/sprites/TRIPLESHOT.png" id="13_1glhp"]
 [ext_resource type="Texture2D" uid="uid://bllvv3udsr5nb" path="res://assets/sprites/triple_shot.png" id="14_h6r61"]
-[ext_resource type="FontFile" uid="uid://cqq32v5qpyxv2" path="res://assets/PixelifySans-VariableFont_wght.ttf" id="8_qb3wu"]
 
 [node name="HUD" type="Control" unique_id=998248903]
 z_index = 1000
@@ -172,6 +171,19 @@ offset_top = 14.0
 offset_right = 65.0
 offset_bottom = 67.0
 texture = ExtResource("14_h6r61")
+
+[node name="StartMessage" type="RichTextLabel" parent="." unique_id=193365191]
+layout_mode = 0
+offset_left = 615.0
+offset_top = 322.0
+offset_right = 1280.0
+offset_bottom = 417.0
+theme_override_fonts/normal_font = ExtResource("8_qb3wu")
+bbcode_enabled = true
+text = "[font_size=24]Kill the enemies. Collect their masks. Become more powerful[/font_size]
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="timeout" from="Control/ti1" to="Control" method="_on_ti_1_timeout"]
 [connection signal="timeout" from="Control/ti2" to="Control" method="_on_ti_2_timeout"]

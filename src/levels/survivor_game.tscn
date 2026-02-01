@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://du6qnhxx4m27i" path="res://audio/music/theme.wav" id="6_gkphq"]
 [ext_resource type="PackedScene" uid="uid://do3bc411yjb3b" path="res://src/actors/giant_enemy_blob.tscn" id="6_xq1fe"]
 [ext_resource type="PackedScene" uid="uid://beryqo615cdq" path="res://src/actors/giant_enemy_bush.tscn" id="7_ek0jc"]
+[ext_resource type="Texture2D" uid="uid://kno75n4j0am6" path="res://assets/sprites/gameover_button.png" id="11_ek0jc"]
 
 [sub_resource type="Curve2D" id="Curve2D_8eqlh"]
 _data = {
@@ -133,40 +134,18 @@ offset_bottom = 665.0
 text = "QUIT"
 
 [node name="GameOverUI" type="Control" parent="UI" unique_id=1519574285]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 
-[node name="GameOverLabel" type="Label" parent="UI/GameOverUI" unique_id=1713464495]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 711.0
-offset_top = 86.0
-offset_right = 1111.0
-offset_bottom = 245.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_75kf4")
-theme_override_font_sizes/font_size = 64
-text = "YOU LOST!"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
 [node name="ScoreLabel" type="Label" parent="UI/GameOverUI" unique_id=1136809407]
 layout_mode = 0
-offset_left = 848.0
-offset_top = 297.0
-offset_right = 1048.0
-offset_bottom = 397.0
+offset_left = 780.0
+offset_top = 390.0
+offset_right = 1250.0
+offset_bottom = 625.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_75kf4")
 theme_override_font_sizes/font_size = 64
@@ -192,6 +171,14 @@ offset_bottom = 906.0
 theme_override_fonts/font = ExtResource("4_75kf4")
 theme_override_font_sizes/font_size = 64
 text = "QUIT"
+
+[node name="TextureRect" type="TextureRect" parent="UI/GameOverUI" unique_id=419899647]
+layout_mode = 0
+offset_left = 471.0
+offset_top = 150.0
+offset_right = 1458.0
+offset_bottom = 323.0
+texture = ExtResource("11_ek0jc")
 
 [node name="IdleMenuSound" type="AudioStreamPlayer" parent="UI" unique_id=708606697]
 stream = ExtResource("5_fv1l1")
