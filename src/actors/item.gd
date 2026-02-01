@@ -20,4 +20,3 @@ func _on_body_entered(body):
 	elif item_type == 2 && body.has_method("on_item_pickup"):
 		body.on_item_pickup(2)
 	queue_free()
-	

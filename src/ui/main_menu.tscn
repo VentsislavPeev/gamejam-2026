@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c881ydql2qc26" path="res://assets/sprites/background.png" id="2_5mgu5"]
 [ext_resource type="FontFile" uid="uid://bs4ww54t7be0" path="res://themes/fonts/Xolonium-Regular.ttf" id="2_7vrkn"]
 [ext_resource type="AudioStream" uid="uid://c2mpintshhkcq" path="res://audio/sfx/ambiance_loop.wav" id="3_f0s2b"]
+[ext_resource type="Texture2D" uid="uid://ii5drvqm0sd4" path="res://assets/sprites/start_button.png" id="4_h03rr"]
 
 [node name="MainMenu" type="Control" unique_id=507938451]
 layout_mode = 3
@@ -22,13 +23,15 @@ texture = ExtResource("2_5mgu5")
 
 [node name="StartButton" type="Button" parent="." unique_id=1832483906]
 layout_mode = 0
-offset_left = 483.0
-offset_top = 362.0
-offset_right = 807.0
-offset_bottom = 524.0
+offset_left = 498.0
+offset_top = 413.0
+offset_right = 966.0
+offset_bottom = 575.0
 theme_override_fonts/font = ExtResource("2_7vrkn")
 theme_override_font_sizes/font_size = 64
-text = "START"
+icon = ExtResource("4_h03rr")
+flat = true
+expand_icon = true
 
 [node name="IdleMenuSound" type="AudioStreamPlayer" parent="." unique_id=1427332533]
 stream = ExtResource("3_f0s2b")
