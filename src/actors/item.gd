@@ -12,10 +12,9 @@ func _ready():
 	$Sprite2D.texture = textures[item_type]
 	
 func _on_body_entered(body):
-	if item_type == 0:
-		body.on_item_pickup()
-	elif item_type == 1:
-		pass
-	elif item_type == 2:
-		pass
+	if item_type == 0 && body.has_method("on_item_pickup"):
+		body.on_item_pickup(0)
+	elif item_type == 1 && body.has_method("on_item_pickup"):
+		body.on_item_pickup(1)
+	queue_free()
 	
