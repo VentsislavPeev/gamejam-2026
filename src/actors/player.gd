@@ -30,7 +30,6 @@ var hurt_cooldown = 0.4
 var hurt_duration = 0.6
 var can_hurt_animation = true
 var is_dead = false
-@export var dash_cooldown = 1.0
 var is_dashing = false
 var can_dash = true
 

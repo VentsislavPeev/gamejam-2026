@@ -67,12 +67,12 @@ func take_dmg(amount: int = 1):
 
 func die():
 	#enemy_kill
-	player.gain_experience(DROP_EXP)
+	player.gain_experience(drop_exp)
 	enemy_kill.play()
 	animated_sprite.play('death')
 	await animated_sprite.animation_finished
 	queue_free()
-	if randf() <= DROP_CHANCE and drop_items < 1:
+	if randf() <= drop_chance and drop_items < 1:
 		drop_item()
 		drop_items += 1
 		
