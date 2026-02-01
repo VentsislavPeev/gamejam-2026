@@ -3,9 +3,14 @@ extends CharacterBody2D
 @onready var animated_sprite = $AnimatedSprite2D
 var health = 100
 
+var mask_stack: Array = []
 var earth_mask = true;
 var fire_mask = false;
 var lightning_mask = false;
+
+func _ready():
+	mask_stack.append(-1)
+	mask_stack.append(-1)
 
 func _physics_process(delta: float):
 	var direction = Input.get_vector("move_left","move_right","move_up","move_down")
@@ -21,18 +26,37 @@ func _physics_process(delta: float):
 		health -= DMG_RATE*overlapping_mobs.size()*delta
 		if health <= 0.0:
 			print("DIED")
-	
-	if earth_mask:
-		keep_max_health()
 
-func keep_max_health():
-	if health > 100:
-		health = 100
+func on_item_pickup(value: int):
+	if mask_stack[0] != -1:
+		mask_stack[1] = value
+		$ItemDuration2.start()
+	
+	elif mask_stack[1] != -1:
+		mask_stack[0] = value
+		$ItemDuration.start()
 		
-func on_item_pickup():
-	$ItemDuration.start()
+	elif mask_stack[0] != -1 and mask_stack[1] != -1:
+		if(mask_stack[0].value.wait_time >= mask_stack[1].value.wait_time):
+			mask_stack[1] = value
+			$ItemDuration2.start()
+		else: 
+			mask_stack[0] = value
+			$ItemDuration.start()
+		
+	else:
+		mask_stack[0] = value
+		$ItemDuration.start()
+		
+		
 	# make the buffs, change speed, make speed constant in the
 	# player script for easier change, add defense, etc
-	
-func _on_item_duration_timeout() -> void:
-	pass # remove buffs
+
+
+func _on_timer_timeout() -> void:
+	mask_stack[0] = -1
+	print("POPPED")
+
+
+func _on_item_duration_2_timeout() -> void:
+	mask_stack[1] = -1

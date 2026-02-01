@@ -8,11 +8,12 @@ var travel_distance = 0
 var count_hit = 0;
 
 func _physics_process(delta: float):
-	if(player.earth_mask):
+	if(player.mask_stack.has(0) && player.mask_stack.has(1)):
+		sprite.play("normal_arrow")
+	elif(player.mask_stack.has(0)):
 		sprite.play("earth_arrow")
-	elif(player.fire_mask):
+	elif(player.mask_stack.has(1)):
 		sprite.play("fire_arrow")
-	elif(player.fire_mask && player.earth_mask):pass
 	else: sprite.play("normal_arrow")
 	
 	const SPEED = 1000
@@ -24,28 +25,18 @@ func _physics_process(delta: float):
 	if travel_distance > RANGE:
 		queue_free()
 
-#func earth_mask_effect():
-	#sprite.play("earth_arrow")
-#
-#func fire_mask_effect():
-	#sprite.play("fire_arrow")
-#
-#func fire_and_earth_mask():
-	#sprite.play("normal_arrow")
-
 func _on_body_entered(body: Node2D) -> void:
-	if(player.earth_mask && body.has_method("take_dmg")):
-		print(player.health)
-		body.take_dmg()
+	if !body.has_method("take_dmg"):
+		return
+	body.take_dmg()
+
+	if player.mask_stack.has(1):
+		body.take_fire_dmg()
+		
+	if player.mask_stack.has(0):
+		print("Inside earth")
 		sprite.scale *= 0.7
 		count_hit += 1
 		if count_hit == 3:
 			queue_free()
-		
-	elif (player.fire_mask && body.has_method("take_fire_dmg")):
-		body.take_dmg()
-		body.take_fire_dmg()
-		queue_free()
-	elif body.has_method("take_dmg"):
-		body.take_dmg()
-		queue_free()
+	else: queue_free()
