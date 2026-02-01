@@ -6,6 +6,16 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_m15pl"]
 radius = 721.034
 
+[sub_resource type="GDScript" id="GDScript_m15pl"]
+script/source = "extends Timer
+
+
+
+func _start():
+	wait_time = %Weapon.wait_time
+	
+"
+
 [node name="Weapon" type="Area2D" unique_id=940212508]
 collision_layer = 0
 collision_mask = 2
@@ -25,11 +35,12 @@ flip_h = true
 
 [node name="ShootingPoint" type="Marker2D" parent="WeaponPivot/Sprite2D" unique_id=603117877]
 unique_name_in_owner = true
-position = Vector2(-97.52379, 34.091267)
+position = Vector2(-233.20909, 34.091267)
 
 [node name="Timer" type="Timer" parent="." unique_id=1088804324]
 wait_time = 0.5
 autostart = true
+script = SubResource("GDScript_m15pl")
 
 [node name="Sprite2D" type="Sprite2D" parent="Timer" unique_id=763224400]
 
@@ -37,4 +48,9 @@ autostart = true
 stream = ExtResource("2_m15pl")
 volume_db = 20.0
 
+[node name="TripleShotTimer" type="Timer" parent="." unique_id=56890405]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="TripleShotTimer" to="." method="_on_triple_shot_timer_timeout"]

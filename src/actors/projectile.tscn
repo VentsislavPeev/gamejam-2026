@@ -1,25 +1,77 @@
 [gd_scene format=3 uid="uid://dryvukmawshgm"]
 
 [ext_resource type="Script" uid="uid://bom08qyh7fouy" path="res://src/actors/projectile.gd" id="1_pmvnu"]
+[ext_resource type="Texture2D" uid="uid://cibsiyuinnvre" path="res://assets/sprites/arrow.png" id="2_tnxhk"]
 [ext_resource type="Texture2D" uid="uid://c50nxrl3243el" path="res://assets/sprites/arrows.png" id="3_tnxhk"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_op4vv"]
-atlas = ExtResource("3_tnxhk")
-region = Rect2(0, 5, 16, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pmvnu"]
-atlas = ExtResource("3_tnxhk")
-region = Rect2(0, 24, 17, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bdkmj"]
 atlas = ExtResource("3_tnxhk")
 region = Rect2(0, 0, 16, 4)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2qyr"]
+atlas = ExtResource("2_tnxhk")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyg6p"]
+atlas = ExtResource("2_tnxhk")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_op4vv"]
+atlas = ExtResource("3_tnxhk")
+region = Rect2(0, 5, 16, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hpsl"]
+atlas = ExtResource("2_tnxhk")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmvnu"]
+atlas = ExtResource("3_tnxhk")
+region = Rect2(0, 24, 17, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkf2r"]
+atlas = ExtResource("2_tnxhk")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5oiml"]
+atlas = ExtResource("2_tnxhk")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2def"]
+atlas = ExtResource("2_tnxhk")
+region = Rect2(32, 16, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_b2qyr"]
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_bdkmj")
+}],
+"loop": true,
+"name": &"_arrow",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2qyr")
+}],
+"loop": true,
+"name": &"air_arrow",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tyg6p")
+}],
+"loop": true,
+"name": &"airearth_arrow",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_op4vv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hpsl")
 }],
 "loop": true,
 "name": &"earth_arrow",
@@ -28,6 +80,9 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pmvnu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkf2r")
 }],
 "loop": true,
 "name": &"fire_arrow",
@@ -35,10 +90,18 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bdkmj")
+"texture": SubResource("AtlasTexture_5oiml")
 }],
 "loop": true,
-"name": &"normal_arrow",
+"name": &"fireair_arrow",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2def")
+}],
+"loop": true,
+"name": &"fireearth_arrow",
 "speed": 5.0
 }]
 
@@ -55,8 +118,8 @@ script = ExtResource("1_pmvnu")
 position = Vector2(7, -4.7683716e-07)
 scale = Vector2(7.411765, 7.125001)
 sprite_frames = SubResource("SpriteFrames_b2qyr")
-animation = &"normal_arrow"
-autoplay = "normal_arrow"
+animation = &"fire_arrow"
+autoplay = "_arrow"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2104062900]
 position = Vector2(52, -3)

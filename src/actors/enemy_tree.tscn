@@ -1,0 +1,159 @@
+[gd_scene format=3 uid="uid://dwh27nohm65n6"]
+
+[ext_resource type="Script" uid="uid://rrn8xd3mdgrw" path="res://src/actors/enemy.gd" id="1_oylxq"]
+[ext_resource type="Texture2D" uid="uid://b26r6opfkfu7o" path="res://assets/sprites/e3_walk_fire_anim.png" id="2_oylxq"]
+[ext_resource type="Texture2D" uid="uid://io2da64j4rwy" path="res://assets/sprites/e3_death_anim.png" id="3_5brle"]
+[ext_resource type="Texture2D" uid="uid://b7jog4bksy8ql" path="res://assets/sprites/e3_walk_m2_anim.png" id="4_mqhqs"]
+[ext_resource type="AudioStream" uid="uid://dlm8biaaxqq1m" path="res://audio/sfx/enemy_kill_1.wav" id="5_n7xic"]
+[ext_resource type="AudioStream" uid="uid://ck8pkjthxq34i" path="res://audio/sfx/enemy_kill_2.wav" id="6_4ij5k"]
+[ext_resource type="AudioStream" uid="uid://bfnuefs4loscq" path="res://audio/sfx/enemy_kill_3.wav" id="7_clihk"]
+[ext_resource type="AudioStream" uid="uid://d31npex0anpq0" path="res://audio/sfx/arrow_fire_layer_1.wav" id="8_42nqm"]
+[ext_resource type="AudioStream" uid="uid://cnscvphdni872" path="res://audio/sfx/arrow_fire_layer_2.wav" id="9_l3u67"]
+[ext_resource type="AudioStream" uid="uid://0y68y1m0kmld" path="res://audio/sfx/arrow_fire_layer_3.wav" id="10_ew47r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pdfo5"]
+radius = 61.073727
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4aa5b"]
+atlas = ExtResource("2_oylxq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7xic"]
+atlas = ExtResource("2_oylxq")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ij5k"]
+atlas = ExtResource("2_oylxq")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clihk"]
+atlas = ExtResource("2_oylxq")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42nqm"]
+atlas = ExtResource("3_5brle")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3u67"]
+atlas = ExtResource("3_5brle")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ew47r"]
+atlas = ExtResource("3_5brle")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpisl"]
+atlas = ExtResource("3_5brle")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2swfn"]
+atlas = ExtResource("4_mqhqs")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_con41"]
+atlas = ExtResource("4_mqhqs")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eo6ur"]
+atlas = ExtResource("4_mqhqs")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adj3j"]
+atlas = ExtResource("4_mqhqs")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xwthg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4aa5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7xic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ij5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_clihk")
+}],
+"loop": true,
+"name": &"burning",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42nqm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3u67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ew47r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpisl")
+}],
+"loop": false,
+"name": &"death",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2swfn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_con41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eo6ur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adj3j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7ed8l"]
+streams_count = 3
+stream_0/stream = ExtResource("5_n7xic")
+stream_1/stream = ExtResource("6_4ij5k")
+stream_2/stream = ExtResource("7_clihk")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4tn5t"]
+streams_count = 6
+stream_0/stream = ExtResource("8_42nqm")
+stream_1/stream = ExtResource("9_l3u67")
+stream_2/stream = ExtResource("10_ew47r")
+
+[node name="EnemyTrees" type="CharacterBody2D" unique_id=1077009339 groups=["enemies"]]
+z_index = 2
+z_as_relative = false
+collision_layer = 2
+collision_mask = 2
+safe_margin = 0.8
+script = ExtResource("1_oylxq")
+max_health = 5
+drop_exp = 35
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=634576994]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(10, -10)
+shape = SubResource("CircleShape2D_pdfo5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=44999409]
+position = Vector2(12, -36.000008)
+scale = Vector2(9, 9)
+sprite_frames = SubResource("SpriteFrames_xwthg")
+animation = &"death"
+autoplay = "default"
+
+[node name="EnemyKill" type="AudioStreamPlayer" parent="AnimatedSprite2D" unique_id=1932111570]
+stream = SubResource("AudioStreamRandomizer_7ed8l")
+volume_db = -10.0
+
+[node name="BurnEnemy" type="AudioStreamPlayer" parent="AnimatedSprite2D" unique_id=612284900]
+stream = SubResource("AudioStreamRandomizer_4tn5t")
