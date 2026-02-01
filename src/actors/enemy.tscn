@@ -10,6 +10,9 @@
 [ext_resource type="AudioStream" uid="uid://d31npex0anpq0" path="res://audio/sfx/arrow_fire_layer_1.wav" id="8_q1eoc"]
 [ext_resource type="AudioStream" uid="uid://cnscvphdni872" path="res://audio/sfx/arrow_fire_layer_2.wav" id="9_higb3"]
 [ext_resource type="AudioStream" uid="uid://0y68y1m0kmld" path="res://audio/sfx/arrow_fire_layer_3.wav" id="10_6axsv"]
+[ext_resource type="AudioStream" uid="uid://dyy6jdki4b1v0" path="res://audio/sfx/arrow_hit_1.wav" id="11_7ed8l"]
+[ext_resource type="AudioStream" uid="uid://ct8t6uyj1dsjo" path="res://audio/sfx/arrow_hit_2.wav" id="12_4tn5t"]
+[ext_resource type="AudioStream" uid="uid://bu5higevvkyfd" path="res://audio/sfx/arrow_hit_3.wav" id="13_fj5g8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pdfo5"]
 radius = 71.99
@@ -170,7 +173,13 @@ stream_0/stream = ExtResource("8_q1eoc")
 stream_1/stream = ExtResource("9_higb3")
 stream_2/stream = ExtResource("10_6axsv")
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1077009339 groups=["enemies"]]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fj5g8"]
+streams_count = 3
+stream_0/stream = ExtResource("12_4tn5t")
+stream_1/stream = ExtResource("11_7ed8l")
+stream_2/stream = ExtResource("13_fj5g8")
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1077009339 groups=["enemies"]]
 z_index = 2
 z_as_relative = false
 collision_layer = 2
@@ -191,9 +200,17 @@ sprite_frames = SubResource("SpriteFrames_xwthg")
 animation = &"death"
 autoplay = "default"
 
-[node name="EnemyKill" type="AudioStreamPlayer" parent="AnimatedSprite2D" unique_id=1932111570]
+[node name="EnemyKill" type="AudioStreamPlayer" parent="AnimatedSprite2D" unique_id=1028411505]
+unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_7ed8l")
 volume_db = -10.0
 
-[node name="BurnEnemy" type="AudioStreamPlayer" parent="AnimatedSprite2D" unique_id=612284900]
+[node name="BurnEnemy" type="AudioStreamPlayer" parent="AnimatedSprite2D" unique_id=313887836]
+unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_4tn5t")
+volume_db = -10.0
+
+[node name="ArrowNormalHit" type="AudioStreamPlayer" parent="AnimatedSprite2D" unique_id=611746941]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_fj5g8")
+volume_db = -10.0

@@ -8,6 +8,8 @@ var mask_fire = preload("res://assets/sprites/fire_mask_mini.png")
 var mask_lightning = preload("res://assets/sprites/lightning_mask_mini.png")
 var textures = [mask_earth, mask_fire, mask_lightning]
 
+@onready var mask_pickup_sound = $MaskPickUp
+
 func _ready():
 	$Sprite2D.texture = textures[item_type]
 	
@@ -29,8 +31,10 @@ func start_floating():
 func _on_body_entered(body):
 	if item_type == 0 && body.has_method("on_item_pickup"):
 		body.on_item_pickup(0)
+		
 	elif item_type == 1 && body.has_method("on_item_pickup"):
 		body.on_item_pickup(1)
 	elif item_type == 2 && body.has_method("on_item_pickup"):
 		body.on_item_pickup(2)
+	mask_pickup_sound.play()
 	queue_free()

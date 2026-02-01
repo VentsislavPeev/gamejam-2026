@@ -15,8 +15,11 @@ var knockback_vector = Vector2.ZERO
 @onready var player = get_node("/root/Game/Player")
 @onready var main_scene = get_node("/root/Game")
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var enemy_kill = $AnimatedSprite2D/EnemyKill
-@onready var burning_enemy = $AnimatedSprite2D/BurnEnemy
+
+@onready var arrow_hit_sound = %ArrowNormalHit
+@onready var enemy_kill_sound = %EnemyKill
+@onready var burning_enemy_sound = %BurnEnemy
+const DROP_CHANCE: float = 0.1
 
 
 func _ready():
@@ -43,8 +46,9 @@ func take_fire_dmg(duration: float = 3.0, tick: float = 1.0) -> void:
 	if dot_active:
 		return
 	dot_active = true
-	animated_sprite.play('burning')
-	burning_enemy.play()
+	burning_enemy_sound.play()
+	await get_tree().create_timer(0.1).timeout
+	print('Burnt')
 	
 	#arrow_fire
 
@@ -65,6 +69,7 @@ func get_knocked_back(power):
 
 func take_dmg(amount: int = 1):
 	health -= amount
+	arrow_hit_sound.play()
 	if health <= 0:
 		die()
 
@@ -72,7 +77,8 @@ func die():
 	#enemy_kill
 	player.gain_experience(drop_exp)
 	player.gain_score(drop_score)
-	enemy_kill.play()
+	enemy_kill_sound.play()
+	await get_tree().create_timer(0.1).timeout
 	animated_sprite.play('death')
 	await animated_sprite.animation_finished
 	if randf() <= drop_chance and drop_items < 1:
