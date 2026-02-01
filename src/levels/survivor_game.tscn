@@ -21,8 +21,8 @@ point_count = 5
 y_sort_enabled = true
 script = ExtResource("1_75kf4")
 enemy_scenes = Array[PackedScene]([ExtResource("2_8eqlh"), ExtResource("3_notkh"), ExtResource("4_rsq3c"), ExtResource("5_rsq3c")])
-start_rates = Array[float]([30.0, 30.0, 30.0, 10.0])
-end_rates = Array[float]([25.0, 25.0, 25.0, 25.0])
+start_rates = Array[float]([30.0, 30.0, 35.0, 5.0])
+end_rates = Array[float]([30.0, 25.0, 25.0, 20.0])
 
 [node name="Player" parent="." unique_id=700692499 instance=ExtResource("1_8iqbf")]
 position = Vector2(962, 547)

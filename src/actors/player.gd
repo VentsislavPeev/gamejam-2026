@@ -47,6 +47,8 @@ func _ready():
 
 
 func _physics_process(delta: float):
+	if(is_dead):
+		return
 	if is_dashing:
 		move_and_slide()
 		return
@@ -97,13 +99,10 @@ func take_damage(amount: float):
 
 func die():
 	is_dead = true
-	print("Die function started!") # <--- Add this
-	await animated_sprite.animation_finished
 	animated_sprite.play('die')
-	await animated_sprite.animation_finished
-	print("Animation finished!")   # <--- And this
+	await animated_sprite.animation_finished # <--- And this
 	game.game_over()
-
+	queue_free()
 
 func perform_dash(dash_direction: Vector2):
 	dashed.emit(dash_cooldown)

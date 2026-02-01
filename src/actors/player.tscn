@@ -256,7 +256,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"die",
-"speed": 11.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -441,6 +441,8 @@ scale = Vector2(5.840909, 5.840909)
 sprite_frames = SubResource("SpriteFrames_l3h4q")
 animation = &"die"
 autoplay = "shoot"
+frame = 13
+frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=470462921]
 position = Vector2(0, 71)
