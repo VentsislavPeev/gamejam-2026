@@ -11,10 +11,10 @@ signal dashed(dash)
 @onready var lvlup_animation = $lvlup
 @onready var weapon_timer = $Weapon/Timer
 
-@onready var dash_sound = $DashSound
-@onready var player_death_sound = $PlayerDeath
-@onready var player_hurt_sound = $PlayerHurt
-@onready var player_shoot_sound = $CharShoot
+@onready var dash_sound = %DashSound
+@onready var player_death_sound = %PlayerDeath
+@onready var player_hurt_sound = %PlayerHurt
+@onready var player_shoot_sound = %CharShoot
 
 @onready var hp_bar = $Camera2D/HUD/TextureProgressBar 
 @export var health = 100.0 # Make sure this is a float for delta math
@@ -92,7 +92,7 @@ func take_damage(amount: float):
 		hp_bar.value = health
 		
 	if health <= 0.0:
-		#player_death_sound.play()
+		
 		die()
 	if is_dead:
 		return
@@ -114,6 +114,7 @@ func die():
 	#add die sound
 	#player_death_sound.play()
 	#await sound
+	player_death_sound.play()
 	game.game_over()
 	queue_free()
 
