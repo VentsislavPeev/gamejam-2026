@@ -3,7 +3,6 @@ extends CharacterBody2D
 # --- SIGNALS ---
 signal health_changed(new_health)
 
-<<<<<<< HEAD
 @onready var animated_sprite = $AnimatedSprite2D
 @export var health = 100.0 # Make sure this is a float for delta math
 @export var max_health = 100
@@ -34,12 +33,10 @@ func _ready():
 	# Initialize the bar when the game starts
 	hp_bar.max_value = max_health
 	hp_bar.value = health
-=======
 var mask_stack: Array = []
 var earth_mask = true;
 var fire_mask = false;
 var lightning_mask = false;
->>>>>>> c12f7a0fdf1fa044a0b2d45089d37517485bd33c
 
 func _ready():
 	mask_stack.append(-1)
@@ -69,7 +66,6 @@ func _physics_process(delta: float):
 	# --- DAMAGE LOGIC ---
 	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
 	if overlapping_mobs.size() > 0:
-<<<<<<< HEAD
 		# Calculate the damage amount for this frame
 		var damage_amount = DMG_CAP * overlapping_mobs.size() * delta
 		take_damage(damage_amount)
@@ -141,7 +137,6 @@ func on_item_pickup():
 
 func _on_item_duration_timeout() -> void:
 	pass
-=======
 		health -= DMG_RATE*overlapping_mobs.size()*delta
 		if health <= 0.0:
 			print("DIED")
@@ -179,4 +174,3 @@ func _on_timer_timeout() -> void:
 
 func _on_item_duration_2_timeout() -> void:
 	mask_stack[1] = -1
->>>>>>> c12f7a0fdf1fa044a0b2d45089d37517485bd33c
