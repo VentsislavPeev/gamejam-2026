@@ -326,10 +326,59 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_urqtb"]
-radius = 31.0
+radius = 42.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_foe4e"]
-radius = 34.0147
+radius = 39.051247
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcejv"]
+atlas = ExtResource("7_d8py6")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owrex"]
+atlas = ExtResource("7_d8py6")
+region = Rect2(0, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5m0r"]
+atlas = ExtResource("7_d8py6")
+region = Rect2(0, 40, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2d042"]
+atlas = ExtResource("7_d8py6")
+region = Rect2(0, 60, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bixb0"]
+atlas = ExtResource("7_d8py6")
+region = Rect2(0, 80, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u666v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcejv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owrex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5m0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2d042")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bixb0")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bcejv"]
 atlas = ExtResource("7_d8py6")
@@ -390,7 +439,7 @@ process_mode = 3
 position = Vector2(0.9999924, -68)
 scale = Vector2(5.840909, 5.840909)
 sprite_frames = SubResource("SpriteFrames_l3h4q")
-animation = &"shoot"
+animation = &"die"
 autoplay = "shoot"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=470462921]
@@ -442,6 +491,8 @@ scale = Vector2(6.55, 6.55)
 sprite_frames = SubResource("SpriteFrames_u666v")
 frame = 6
 frame_progress = 1.0
+
+[node name="Dash" type="Timer" parent="." unique_id=184134296]
 
 [connection signal="timeout" from="ItemDuration" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="ItemDuration2" to="." method="_on_item_duration_2_timeout"]

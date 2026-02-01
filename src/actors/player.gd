@@ -18,7 +18,7 @@ signal dashed(dash)
 @export var level = 1
 @export var speed = 600
 @export var damage = 1
-@export var DMG_CAP = 5.0
+@export var DMG_CAP = 30
 const BASE_LEVEL_XP = 100
 
 # --- DASH VARIABLES ---
@@ -29,9 +29,11 @@ const BASE_LEVEL_XP = 100
 var hurt_cooldown = 0.4
 var hurt_duration = 0.6
 var can_hurt_animation = true
+var is_dead = false
+@export var dash_cooldown = 1.0
 var is_dashing = false
 var can_dash = true
-var is_dead = false
+
 # ----------------------
 
 var mask_stack: Array = []
@@ -106,6 +108,7 @@ func die():
 
 func perform_dash(dash_direction: Vector2):
 	dashed.emit(dash_cooldown)
+	$HurtBox/CollisionShape2D.disabled = true;
 	animated_sprite.play('dash')
 	is_dashing = true
 	can_dash = false
@@ -115,7 +118,7 @@ func perform_dash(dash_direction: Vector2):
 	await get_tree().create_timer(dash_duration).timeout
 	animated_sprite.play('shoot')
 	is_dashing = false
-	
+	$HurtBox/CollisionShape2D.disabled = false;
 	await get_tree().create_timer(dash_cooldown).timeout
 	can_dash = true
 	dashed.emit(-1)

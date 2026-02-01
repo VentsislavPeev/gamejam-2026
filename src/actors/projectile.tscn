@@ -1,8 +1,20 @@
 [gd_scene format=3 uid="uid://dryvukmawshgm"]
 
 [ext_resource type="Script" uid="uid://bom08qyh7fouy" path="res://src/actors/projectile.gd" id="1_pmvnu"]
-[ext_resource type="Texture2D" uid="uid://cibsiyuinnvre" path="res://assets/sprites/arrow.png" id="2_tnxhk"]
+[ext_resource type="Texture2D" uid="uid://cibsiyuinnvre" path="res://assets/sprites/arrow.png" id="3_op4vv"]
 [ext_resource type="Texture2D" uid="uid://c50nxrl3243el" path="res://assets/sprites/arrows.png" id="3_tnxhk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_op4vv"]
+atlas = ExtResource("3_tnxhk")
+region = Rect2(0, 5, 16, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2qyr"]
+atlas = ExtResource("3_op4vv")
+region = Rect2(0, 36, 21, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmvnu"]
+atlas = ExtResource("3_tnxhk")
+region = Rect2(0, 24, 17, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bdkmj"]
 atlas = ExtResource("3_tnxhk")
@@ -75,6 +87,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"earth_arrow",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2qyr")
+}],
+"loop": true,
+"name": &"earth_fire_arrow",
 "speed": 5.0
 }, {
 "frames": [{

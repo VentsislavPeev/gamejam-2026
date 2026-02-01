@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://m3krdtdjmgdw" path="res://assets/sprites/dash_icon.png" id="12_7gjxc"]
 [ext_resource type="Texture2D" uid="uid://cwsvcou2f3vrf" path="res://assets/sprites/TRIPLESHOT.png" id="13_1glhp"]
 [ext_resource type="Texture2D" uid="uid://bllvv3udsr5nb" path="res://assets/sprites/triple_shot.png" id="14_h6r61"]
+[ext_resource type="FontFile" uid="uid://cqq32v5qpyxv2" path="res://assets/PixelifySans-VariableFont_wght.ttf" id="8_qb3wu"]
 
 [node name="HUD" type="Control" unique_id=998248903]
 z_index = 1000

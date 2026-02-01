@@ -1,33 +1,39 @@
 extends CharacterBody2D
 
-var health = 3
+@export var max_health := 3
+@export var move_speed := 300.0
+@export var drop_chance := 0.5
+@export var drop_exp := 25
+
+var drop_items = 0
+var health: int
 var dot_active = false;
 var item_scene := preload("res://src/actors/item.tscn")
+var knockback_vector = Vector2.ZERO
+
 @onready var player = get_node("/root/Game/Player")
 @onready var main_scene = get_node("/root/Game")
 @onready var animated_sprite = $AnimatedSprite2D
-
 @onready var enemy_kill = $AnimatedSprite2D/EnemyKill
 @onready var burning_enemy = $AnimatedSprite2D/BurnEnemy
-const DROP_CHANCE: float = 0.5
-const DROP_EXP: int = 25
-var drop_items = 0
-var direction = 0
-@export var speed = 100
-var knockback_vector = Vector2.ZERO
 
-func _physics_process(delta: float):
-	# 1. Calculate your normal movement (e.g., chasing player)
-	var direction_to_player = global_position.direction_to(player.global_position)
-	var normal_velocity = direction_to_player * speed
+
+func _ready():
+	health = max_health
 	
-	# 2. Add the Knockback Vector to your movement
+func _physics_process(delta: float):
+	
+	var direction_to_player = global_position.direction_to(player.global_position)
+	var normal_velocity = direction_to_player * move_speed
 	velocity = normal_velocity + knockback_vector
 	
+	var direction = global_position.direction_to(player.global_position)
+	if direction.x < 0:
+		animated_sprite.flip_h = true;
+	else: animated_sprite.flip_h = false;
+	velocity = direction * move_speed
 	move_and_slide()
 	
-	# 3. Smoothly reduce knockback to zero (Friction)
-	# The '200' here is the friction strength. Higher = stops faster.
 	if knockback_vector != Vector2.ZERO:
 		knockback_vector = knockback_vector.move_toward(Vector2.ZERO, 500 * delta)
 
