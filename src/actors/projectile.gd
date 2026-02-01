@@ -8,13 +8,15 @@ var travel_distance = 0
 var count_hit = 0;
 
 func _physics_process(delta: float):
-	if(player.mask_stack.has(0) && player.mask_stack.has(1)):
-		sprite.play("earth_fire_arrow")
-	elif(player.mask_stack.has(0)):
-		sprite.play("earth_arrow")
-	elif(player.mask_stack.has(1)):
-		sprite.play("fire_arrow")
-	else: sprite.play("normal_arrow")
+	var animation_str = ""
+	if(player.mask_stack.has(1)):
+		animation_str += "fire"
+	if(player.mask_stack.has(2)):
+		animation_str += "air"
+	if(player.mask_stack.has(0)):
+		animation_str += "earth"
+	animation_str += "_arrow"
+	sprite.play(animation_str)
 	
 	const SPEED = 1200
 	const RANGE = 1200
@@ -29,10 +31,10 @@ func _on_body_entered(body: Node2D) -> void:
 	if !body.has_method("take_dmg"):
 		return
 	body.take_dmg()
-
+	if player.mask_stack.has(2):
+		body.get_knocked_back(1.5)
 	if player.mask_stack.has(1):
 		body.take_fire_dmg()
-		
 	if player.mask_stack.has(0):
 		sprite.scale *= 0.7
 		count_hit += 1

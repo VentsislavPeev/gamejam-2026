@@ -4,6 +4,7 @@ extends CharacterBody2D
 signal health_changed(new_health)
 signal mask_changed(masks)
 signal exp_changed(exp)
+signal dashed(dash)
 
 @onready var game = get_node("/root/Game")
 @onready var animated_sprite = $AnimatedSprite2D
@@ -23,11 +24,12 @@ const BASE_LEVEL_XP = 100
 # --- DASH VARIABLES ---
 @export var dash_speed = 1600 
 @export var dash_duration = 0.2
+@export var dash_cooldown = 1.0
 
 var hurt_cooldown = 0.4
 var hurt_duration = 0.6
 var can_hurt_animation = true
-@export var dash_cooldown = 1.0
+var is_dead = false
 var is_dashing = false
 var can_dash = true
 
@@ -41,12 +43,13 @@ func _ready():
 	mask_stack.append(-1)
 	hp_bar.max_value = max_health
 	hp_bar.value = health
+	animated_sprite.sprite_frames.set_animation_loop("shoot", true)
+
 
 func _physics_process(delta: float):
 	if is_dashing:
 		move_and_slide()
 		return
-
 	# --- MOVEMENT ---
 	var direction = Input.get_vector("move_left","move_right","move_up","move_down")
 
@@ -82,27 +85,32 @@ func take_damage(amount: float):
 		
 	if health <= 0.0:
 		die()
-	
+	if is_dead:
+		return
 	if can_hurt_animation:
 		animated_sprite.play('hurt')
-		await get_tree().create_timer(hurt_duration).timeout
+		await animated_sprite.animation_finished
 		animated_sprite.play('shoot')
 		can_hurt_animation = false
-		await get_tree().create_timer(hurt_cooldown).timeout
 		can_hurt_animation = true
 
 
 func die():
+	is_dead = true
+	print("Die function started!") # <--- Add this
+	await animated_sprite.animation_finished
 	animated_sprite.play('die')
+	await animated_sprite.animation_finished
+	print("Animation finished!")   # <--- And this
 	game.game_over()
 
 
-
 func perform_dash(dash_direction: Vector2):
+	dashed.emit(dash_cooldown)
+	$HurtBox/CollisionShape2D.disabled = true;
 	animated_sprite.play('dash')
 	is_dashing = true
 	can_dash = false
-	$HurtBox/CollisionShape2D.disabled = true;
 	
 	velocity = dash_direction.normalized() * dash_speed
 	
@@ -110,9 +118,9 @@ func perform_dash(dash_direction: Vector2):
 	animated_sprite.play('shoot')
 	is_dashing = false
 	$HurtBox/CollisionShape2D.disabled = false;
-	
 	await get_tree().create_timer(dash_cooldown).timeout
 	can_dash = true
+	dashed.emit(-1)
 
 func calculate_experience_to_level(level: int) -> float:
 	return (level - 0.5) ** 2 * BASE_LEVEL_XP
@@ -125,7 +133,6 @@ func gain_experience(exp: int) -> void:
 		level_up()
 
 func level_up():
-	print('LEVELED UP')
 	lvlup_animation.play('default')
 	level += 1
 	max_health += 3
@@ -148,10 +155,12 @@ func keep_max_health():
 func on_item_pickup(value: int):
 	if mask_stack[0] != -1 and mask_stack[1] != -1:
 		if($ItemDuration.wait_time >= $ItemDuration2.wait_time):
-			mask_stack[0] = value
-			$ItemDuration2.start()
-		else: 
+			print("mask 1 ", value)
 			mask_stack[1] = value
+			$ItemDuration2.start()
+		else:
+			print("mask 0 ", value)
+			mask_stack[0] = value
 			$ItemDuration.start()
 	elif mask_stack[0] != -1:
 		mask_stack[1] = value
@@ -172,7 +181,6 @@ func on_item_pickup(value: int):
 func _on_timer_timeout() -> void:
 	mask_stack[0] = -1
 	mask_changed.emit(mask_stack)
-	print("POPPED")
 
 
 func _on_item_duration_2_timeout() -> void:

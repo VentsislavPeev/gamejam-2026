@@ -1,5 +1,5 @@
 extends Area2D
-
+signal triple_shot_signal(triple)
 @onready var shooting = $CharShoot
 
 const PROJECTILE = preload("res://src/actors/projectile.tscn")
@@ -22,8 +22,9 @@ func shoot():
 	%ShootingPoint.add_child(new_projectile)
 
 func shoot_spread():
+	triple_shot_signal.emit(2)
 	shooting.play()
-	
+	triple_shot_signal.emit()
 	# The angles for the 3 shots (Left, Center, Right)
 	var angles_deg = [-15, 0, 15]
 		
@@ -42,3 +43,7 @@ func shoot_spread():
 
 func _on_timer_timeout():
 	shoot()
+
+
+func _on_triple_shot_timer_timeout() -> void:
+	triple_shot_signal.emit(-1)
