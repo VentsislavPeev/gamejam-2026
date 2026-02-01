@@ -1,9 +1,8 @@
 [gd_scene format=3 uid="uid://befxiwpl8v5h2"]
 
-[ext_resource type="PackedScene" uid="uid://jpjfaslv1u0t" path="res://src/actors/player.tscn" id="1_8iqbf"]
-[ext_resource type="PackedScene" uid="uid://cpq728pdgjtsk" path="res://assets/themes/test_bg.tscn" id="3_h101p"]
+[ext_resource type="PackedScene" uid="uid://dypcdmkbf2y1b" path="res://src/actors/player.tscn" id="1_8iqbf"]
 [ext_resource type="Script" uid="uid://tpk0kiobwpv5" path="res://src/levels/survivor_game.gd" id="1_75kf4"]
-[ext_resource type="PackedScene" uid="uid://e6dlfmgfl0mr" path="res://src/actors/obstacle.tscn" id="2_a210u"]
+[ext_resource type="PackedScene" uid="uid://cpq728pdgjtsk" path="res://assets/themes/test_bg.tscn" id="3_h101p"]
 [ext_resource type="FontFile" uid="uid://bs4ww54t7be0" path="res://themes/fonts/Xolonium-Regular.ttf" id="4_75kf4"]
 [ext_resource type="AudioStream" uid="uid://c2mpintshhkcq" path="res://audio/sfx/ambiance_loop.wav" id="5_fv1l1"]
 [ext_resource type="AudioStream" uid="uid://du6qnhxx4m27i" path="res://audio/music/theme.wav" id="6_gkphq"]
@@ -14,81 +13,6 @@ _data = {
 }
 point_count = 5
 
-[sub_resource type="GDScript" id="GDScript_gkphq"]
-script/source = "# UI.gd (CanvasLayer) - СВЪРЗАНО ВСИЧКО!
-extends CanvasLayer
-class_name GameUI
-
-@onready var pause_ui: Control = $PauseUI
-@onready var game_over_ui: Control = $GameOverUI
-@onready var score_label: Label = $ScoreLabel
-@onready var health_bar: ProgressBar = $HealthBar
-@onready var time_label: Label = $TimeLabel
-@onready var game_over_score_label: Label = $GameOverUI/ScoreLabel
-@onready var ambience_loop: AudioStreamPlayer = $IdleMenuSound
-
-var score: int = 0
-var current_health: int = 100
-
-signal resume_game  # За GameScene
-signal retry_game
-signal quit_game
-
-func _ready():
-	# 🔥 ВСИЧКИ БУТОНИ ТУК!
-	pause_ui.get_node(\"ContinueButton\").pressed.connect(_on_resume)
-	pause_ui.get_node(\"RetryButton\").pressed.connect(_on_pause_retry)
-	pause_ui.get_node(\"QuitButton\").pressed.connect(_on_pause_quit)
-	
-	game_over_ui.get_node(\"RetryButton\").pressed.connect(_on_game_over_retry)
-	game_over_ui.get_node(\"QuitButton\").pressed.connect(_on_game_over_quit)
-	
-	# Start скрито
-	pause_ui.visible = false
-	game_over_ui.visible = false
-
-# 🔥 PUBLIC - GameScene вика
-func update_score(new_score: int):
-	score = new_score
-	score_label.text = \"Score: %d\" % score
-
-func update_time(time_left: float):
-	time_label.text = \"Time: %d:%02d\" % [int(time_left/60), int(time_left)%60]
-
-func update_health(new_health: int):
-	current_health = new_health
-	health_bar.value = current_health
-
-func toggle_pause():
-	Engine.time_scale = 1.0 if pause_ui.visible else 0.0
-	pause_ui.visible = !pause_ui.visible
-	if pause_ui.visible:
-		ambience_loop.play()
-
-func show_game_over():
-	Engine.time_scale = 0.0
-	game_over_ui.visible = true
-	game_over_score_label.text = \"Final Score: %d\" % score
-	ambience_loop.play()
-
-# 🔥 PRIVATE - само бутони
-func _on_resume():
-	resume_game.emit()  # GameScene чува
-	toggle_pause()
-
-func _on_pause_retry():
-	retry_game.emit()
-
-func _on_pause_quit():
-	quit_game.emit()
-
-func _on_game_over_retry():
-	retry_game.emit()
-
-func _on_game_over_quit():
-	quit_game.emit()
-"
-
 [node name="Game" type="Node2D" unique_id=1953090852]
 y_sort_enabled = true
 script = ExtResource("1_75kf4")
@@ -96,8 +20,6 @@ script = ExtResource("1_75kf4")
 [node name="Player" parent="." unique_id=700692499 instance=ExtResource("1_8iqbf")]
 position = Vector2(962, 547)
 
-[node name="MapChunk" parent="." unique_id=736343852 instance=ExtResource("3_h101p")]
-z_index = -189
 [node name="Path2D" type="Path2D" parent="Player" unique_id=288922034]
 position = Vector2(-1231.5059, -691.01056)
 scale = Vector2(1.1696703, 1.2135849)
@@ -111,16 +33,15 @@ progress = 482.46
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player" unique_id=1242742083]
 
-[node name="StaticBody2D" parent="." unique_id=1033802667 instance=ExtResource("2_a210u")]
-position = Vector2(575, 474)
+[node name="MapChunk" parent="." unique_id=736343852 instance=ExtResource("3_h101p")]
+z_index = -189
 
 [node name="Timer" type="Timer" parent="." unique_id=185791145]
 wait_time = 0.5
 autostart = true
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=596854622]
-script = SubResource("GDScript_gkphq")
-metadata/_custom_type_script = "uid://b6kf6kdiqtbth"
+process_mode = 3
 
 [node name="ScoreLabel" type="Label" parent="UI" unique_id=724628742]
 visible = false

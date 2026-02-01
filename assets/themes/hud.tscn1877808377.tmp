@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://de28liwa3olvy"]
+
+[ext_resource type="Texture2D" uid="uid://cskn2n0j5qtqc" path="res://assets/sprites/hp_progress.png" id="2_lpmwf"]
+[ext_resource type="Script" uid="uid://co7igtu5edtkr" path="res://assets/themes/control.gd" id="3_27jxx"]
+[ext_resource type="Script" uid="uid://c5tpjqjlmen3n" path="res://assets/themes/texture_progress_bar.gd" id="3_lpmwf"]
+
+[node name="HUD" type="Control" unique_id=998248903]
+z_index = 1000
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=698087041]
+layout_mode = 0
+offset_left = 874.0
+offset_top = 588.0
+offset_right = 1038.0
+offset_bottom = 600.0
+nine_patch_stretch = true
+texture_progress = ExtResource("2_lpmwf")
+script = ExtResource("3_lpmwf")
+
+[node name="Control" type="Control" parent="." unique_id=1381733681]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_27jxx")
+
+[node name="t1" type="TextureRect" parent="Control" unique_id=793047214]
+layout_mode = 0
+offset_left = 781.0
+offset_top = 837.0
+offset_right = 1046.0955
+offset_bottom = 1079.0
+
+[node name="t2" type="TextureRect" parent="Control" unique_id=77279793]
+layout_mode = 0
+offset_left = 781.0
+offset_top = 837.0
+offset_right = 1046.0955
+offset_bottom = 1079.0
+flip_h = true
