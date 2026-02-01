@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://454uqca11mer"]
 
 [ext_resource type="Script" uid="uid://cptoo6cjyw0t1" path="res://src/actors/item.gd" id="1_672s0"]
-[ext_resource type="AudioStream" uid="uid://dtf27yax1eoiv" path="res://audio/sfx/mask_pickup.wav" id="2_vjtjh"]
+[ext_resource type="AudioStream" uid="uid://clbasfvo2xm5m" path="res://audio/sfx/mask_drop.wav" id="2_vjtjh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ll3t4"]
 radius = 29.068884
@@ -16,6 +16,8 @@ scale = Vector2(12, 12)
 shape = SubResource("CircleShape2D_ll3t4")
 
 [node name="MaskPickUp" type="AudioStreamPlayer" parent="." unique_id=1394792149]
+unique_name_in_owner = true
 stream = ExtResource("2_vjtjh")
+volume_db = 13.5
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

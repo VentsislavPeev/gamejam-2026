@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://bs4ww54t7be0" path="res://themes/fonts/Xolonium-Regular.ttf" id="2_7vrkn"]
 [ext_resource type="AudioStream" uid="uid://c2mpintshhkcq" path="res://audio/sfx/ambiance_loop.wav" id="3_f0s2b"]
 [ext_resource type="Texture2D" uid="uid://ii5drvqm0sd4" path="res://assets/sprites/start_button.png" id="4_h03rr"]
+[ext_resource type="AudioStream" uid="uid://cjpre43f1vsm2" path="res://audio/sfx/menu_loop.wav" id="6_ljhhu"]
 
 [node name="MainMenu" type="Control" unique_id=507938451]
 layout_mode = 3
@@ -35,4 +36,8 @@ expand_icon = true
 
 [node name="IdleMenuSound" type="AudioStreamPlayer" parent="." unique_id=1427332533]
 stream = ExtResource("3_f0s2b")
+autoplay = true
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1284171565]
+stream = ExtResource("6_ljhhu")
 autoplay = true
