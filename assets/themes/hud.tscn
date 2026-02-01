@@ -78,6 +78,19 @@ texture_under = ExtResource("4_61qfh")
 texture_progress = ExtResource("5_efmde")
 script = ExtResource("3_lpmwf")
 
+[node name="LevelText" type="RichTextLabel" parent="ExperienceBar" unique_id=608384559]
+layout_mode = 0
+offset_left = 208.0
+offset_top = -967.0
+offset_right = 452.40002
+offset_bottom = -873.0
+theme_override_fonts/normal_font = ExtResource("8_qb3wu")
+bbcode_enabled = true
+text = "[font_size=24]Hello[/font_size]
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="TextureRect" type="TextureRect" parent="." unique_id=8614634]
 layout_mode = 0
 offset_left = 703.0
