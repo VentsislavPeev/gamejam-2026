@@ -383,14 +383,14 @@ animations = [{
 [node name="Player" type="CharacterBody2D" unique_id=700692499 groups=["player"]]
 z_index = 1
 script = ExtResource("1_gdh0h")
-health = 1.0
+health = 20.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=693606667]
 process_mode = 3
 position = Vector2(0.9999924, -68)
 scale = Vector2(5.840909, 5.840909)
 sprite_frames = SubResource("SpriteFrames_l3h4q")
-animation = &"die"
+animation = &"shoot"
 autoplay = "shoot"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=470462921]

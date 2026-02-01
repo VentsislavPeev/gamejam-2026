@@ -17,5 +17,7 @@ func _on_body_entered(body):
 		body.on_item_pickup(0)
 	elif item_type == 1 && body.has_method("on_item_pickup"):
 		body.on_item_pickup(1)
+	elif item_type == 2 && body.has_method("on_item_pickup"):
+		body.on_item_pickup(2)
 	queue_free()
 	

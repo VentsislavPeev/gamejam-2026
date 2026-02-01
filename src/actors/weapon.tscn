@@ -53,3 +53,4 @@ wait_time = 2.0
 one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="TripleShotTimer" to="." method="_on_triple_shot_timer_timeout"]
