@@ -197,8 +197,8 @@ shape = SubResource("CircleShape2D_pdfo5")
 position = Vector2(12, -36.000008)
 scale = Vector2(6.546875, 6.546875)
 sprite_frames = SubResource("SpriteFrames_xwthg")
-animation = &"death"
 autoplay = "default"
+flip_h = true
 
 [node name="EnemyKill" type="AudioStreamPlayer" parent="AnimatedSprite2D" unique_id=1028411505]
 unique_name_in_owner = true
