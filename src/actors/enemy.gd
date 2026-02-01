@@ -16,9 +16,9 @@ var knockback_vector = Vector2.ZERO
 @onready var main_scene = get_node("/root/Game")
 @onready var animated_sprite = $AnimatedSprite2D
 
-@onready var arrow_hit_sound = $AnimatedSprite2D/ArrowNormalHit
-@onready var enemy_kill_sound = $AnimatedSprite2D/EnemyKill
-@onready var burning_enemy_sound = $AnimatedSprite2D/BurnEnemy
+@onready var arrow_hit_sound = %ArrowNormalHit
+@onready var enemy_kill_sound = %EnemyKill
+@onready var burning_enemy_sound = %BurnEnemy
 const DROP_CHANCE: float = 0.1
 
 

@@ -10,6 +10,9 @@
 [ext_resource type="AudioStream" uid="uid://d31npex0anpq0" path="res://audio/sfx/arrow_fire_layer_1.wav" id="8_cngfj"]
 [ext_resource type="AudioStream" uid="uid://cnscvphdni872" path="res://audio/sfx/arrow_fire_layer_2.wav" id="9_j81tp"]
 [ext_resource type="AudioStream" uid="uid://0y68y1m0kmld" path="res://audio/sfx/arrow_fire_layer_3.wav" id="10_ic8bk"]
+[ext_resource type="AudioStream" uid="uid://ct8t6uyj1dsjo" path="res://audio/sfx/arrow_hit_2.wav" id="11_w6cl0"]
+[ext_resource type="AudioStream" uid="uid://dyy6jdki4b1v0" path="res://audio/sfx/arrow_hit_1.wav" id="12_1yfxt"]
+[ext_resource type="AudioStream" uid="uid://bu5higevvkyfd" path="res://audio/sfx/arrow_hit_3.wav" id="13_abrry"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pdfo5"]
 radius = 90.27181
@@ -144,17 +147,23 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1yfxt"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_w6cl0"]
 streams_count = 3
 stream_0/stream = ExtResource("5_1yfxt")
 stream_1/stream = ExtResource("6_abrry")
 stream_2/stream = ExtResource("7_56rbt")
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_abrry"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1yfxt"]
 streams_count = 6
 stream_0/stream = ExtResource("8_cngfj")
 stream_1/stream = ExtResource("9_j81tp")
 stream_2/stream = ExtResource("10_ic8bk")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_abrry"]
+streams_count = 3
+stream_0/stream = ExtResource("11_w6cl0")
+stream_1/stream = ExtResource("12_1yfxt")
+stream_2/stream = ExtResource("13_abrry")
 
 [node name="Giant_enemy_bush" type="CharacterBody2D" unique_id=1077009339 groups=["enemies"]]
 z_index = 2
@@ -180,9 +189,17 @@ sprite_frames = SubResource("SpriteFrames_w6cl0")
 animation = &"death"
 autoplay = "default"
 
-[node name="EnemyKill" type="AudioStreamPlayer" parent="AnimatedSprite2D" unique_id=900870080]
+[node name="EnemyKill" type="AudioStreamPlayer" parent="AnimatedSprite2D" unique_id=1234708563]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_w6cl0")
+volume_db = -10.0
+
+[node name="BurnEnemy" type="AudioStreamPlayer" parent="AnimatedSprite2D" unique_id=651474767]
+unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_1yfxt")
 volume_db = -10.0
 
-[node name="BurnEnemy" type="AudioStreamPlayer" parent="AnimatedSprite2D" unique_id=357441892]
+[node name="ArrowNormalHit" type="AudioStreamPlayer" parent="AnimatedSprite2D" unique_id=999471277]
+unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_abrry")
+volume_db = -10.0
