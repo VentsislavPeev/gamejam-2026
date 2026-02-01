@@ -147,7 +147,7 @@ shape = SubResource("CircleShape2D_pdfo5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=44999409]
 position = Vector2(11, -85.00001)
-scale = Vector2(13.687501, 13.687501)
+scale = Vector2(14, 14)
 sprite_frames = SubResource("SpriteFrames_xwthg")
 animation = &"death"
 autoplay = "default"

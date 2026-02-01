@@ -41,10 +41,10 @@ func take_fire_dmg(duration: float = 3.0, tick: float = 1.0) -> void:
 	if dot_active:
 		return
 	dot_active = true
+	animated_sprite.play('burning')
 	burning_enemy.play()
 	
 	#arrow_fire
-	animated_sprite.play('burning')
 
 	var elapsed := 0.0
 	while elapsed < duration and is_inside_tree():
@@ -52,6 +52,7 @@ func take_fire_dmg(duration: float = 3.0, tick: float = 1.0) -> void:
 		await get_tree().create_timer(tick).timeout
 		elapsed += tick
 	dot_active = false
+	animated_sprite.play("default")
 
 func get_knocked_back(power):
 	var direction = global_position.direction_to(player.global_position)

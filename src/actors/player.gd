@@ -141,9 +141,9 @@ func level_up():
 	if hp_bar:
 		hp_bar.max_value = max_health
 		
-	damage += 0.2
+	damage += 0.5
 	speed += 20
-	weapon_timer.wait_time -= 0.05
+	weapon_timer.wait_time -= 0.5
 	print(weapon_timer.wait_time)
 	
 func keep_max_health():
