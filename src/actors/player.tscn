@@ -429,11 +429,11 @@ shape = SubResource("CircleShape2D_foe4e")
 debug_color = Color(0.9969434, 0, 0.18584156, 0.41960785)
 
 [node name="ItemDuration" type="Timer" parent="." unique_id=1528901738]
-wait_time = 5.0
+wait_time = 7.0
 one_shot = true
 
 [node name="ItemDuration2" type="Timer" parent="." unique_id=1241267615]
-wait_time = 5.0
+wait_time = 7.0
 one_shot = true
 
 [node name="lvlup" type="AnimatedSprite2D" parent="." unique_id=1396152587]

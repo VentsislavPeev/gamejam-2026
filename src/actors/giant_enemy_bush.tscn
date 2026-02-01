@@ -179,6 +179,7 @@ scale = Vector2(14, 14)
 sprite_frames = SubResource("SpriteFrames_w6cl0")
 animation = &"death"
 autoplay = "default"
+flip_h = true
 
 [node name="EnemyKill" type="AudioStreamPlayer" parent="AnimatedSprite2D" unique_id=900870080]
 stream = SubResource("AudioStreamRandomizer_1yfxt")
