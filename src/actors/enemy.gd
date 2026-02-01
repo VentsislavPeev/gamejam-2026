@@ -1,23 +1,29 @@
 extends CharacterBody2D
 
-var health = 3
+@export var max_health := 3
+@export var move_speed := 300.0
+@export var drop_chance := 0.5
+@export var drop_exp := 25
+
+var health: int
 var dot_active = false;
 var item_scene := preload("res://src/actors/item.tscn")
+
 @onready var player = get_node("/root/Game/Player")
 @onready var main_scene = get_node("/root/Game")
 @onready var animated_sprite = $AnimatedSprite2D
-
 @onready var enemy_kill = $AnimatedSprite2D/EnemyKill
 @onready var burning_enemy = $AnimatedSprite2D/BurnEnemy
-const DROP_CHANCE: float = 0.5
-const DROP_EXP: int = 25
 
+func _ready():
+	health = max_health
+	
 func _physics_process(delta: float):
 	var direction = global_position.direction_to(player.global_position)
 	if direction.x < 0:
 		animated_sprite.flip_h = true;
 	else: animated_sprite.flip_h = false;
-	velocity = direction * 300
+	velocity = direction * move_speed
 	move_and_slide()
 
 func take_fire_dmg(duration: float = 3.0, tick: float = 1.0) -> void:
@@ -43,14 +49,14 @@ func take_dmg(amount: int = 1):
 
 func die():
 	#enemy_kill
-	player.gain_experience(DROP_EXP)
+	player.gain_experience(drop_exp)
 	enemy_kill.play()
 	animated_sprite.play('death')
 	await animated_sprite.animation_finished
-	queue_free()
-	if randf() <= DROP_CHANCE:
+	if randf() <= drop_chance:
 		drop_item()
-		
+	queue_free()
+	
 func drop_item():
 	var item = item_scene.instantiate()
 	item.position = position

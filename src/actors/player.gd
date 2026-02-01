@@ -17,7 +17,7 @@ signal exp_changed(exp)
 @export var level = 1
 @export var speed = 600
 @export var damage = 1
-@export var DMG_CAP = 5.0
+@export var DMG_CAP = 30
 const BASE_LEVEL_XP = 100
 
 # --- DASH VARIABLES ---
@@ -41,10 +41,6 @@ func _ready():
 	mask_stack.append(-1)
 	hp_bar.max_value = max_health
 	hp_bar.value = health
-
-func _ready():
-	mask_stack.append(-1)
-	mask_stack.append(-1)
 
 func _physics_process(delta: float):
 	if is_dashing:
@@ -106,12 +102,14 @@ func perform_dash(dash_direction: Vector2):
 	animated_sprite.play('dash')
 	is_dashing = true
 	can_dash = false
+	$HurtBox/CollisionShape2D.disabled = true;
 	
 	velocity = dash_direction.normalized() * dash_speed
 	
 	await get_tree().create_timer(dash_duration).timeout
 	animated_sprite.play('shoot')
 	is_dashing = false
+	$HurtBox/CollisionShape2D.disabled = false;
 	
 	await get_tree().create_timer(dash_cooldown).timeout
 	can_dash = true

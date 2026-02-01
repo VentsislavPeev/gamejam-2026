@@ -35,7 +35,7 @@ flip_h = true
 
 [node name="ShootingPoint" type="Marker2D" parent="WeaponPivot/Sprite2D" unique_id=603117877]
 unique_name_in_owner = true
-position = Vector2(-97.52379, 34.091267)
+position = Vector2(-233.20909, 34.091267)
 
 [node name="Timer" type="Timer" parent="." unique_id=1088804324]
 wait_time = 0.5
