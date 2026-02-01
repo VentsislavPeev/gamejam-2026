@@ -16,9 +16,9 @@ signal dashed(dash)
 @export var experience = 0
 
 @export var level = 1
-@export var speed = 600
+@export var speed = 500
 @export var damage = 1
-@export var DMG_CAP = 30
+@export var DMG_CAP = 40
 const BASE_LEVEL_XP = 100
 
 # --- DASH VARIABLES ---
@@ -146,7 +146,7 @@ func level_up():
 		
 	damage += 0.5
 	speed += 20
-	weapon_timer.wait_time -= 0.5
+	weapon_timer.wait_time -= 0.02
 	print(weapon_timer.wait_time)
 	
 func keep_max_health():
