@@ -10,6 +10,9 @@
 [ext_resource type="AudioStream" uid="uid://c2mpintshhkcq" path="res://audio/sfx/ambiance_loop.wav" id="5_fv1l1"]
 [ext_resource type="PackedScene" path="res://src/actors/giant_enemy_trees.tscn" id="5_rsq3c"]
 [ext_resource type="AudioStream" uid="uid://du6qnhxx4m27i" path="res://audio/music/theme.wav" id="6_gkphq"]
+[ext_resource type="PackedScene" uid="uid://do3bc411yjb3b" path="res://src/actors/giant_enemy_blob.tscn" id="6_xq1fe"]
+[ext_resource type="PackedScene" uid="uid://beryqo615cdq" path="res://src/actors/giant_enemy_bush.tscn" id="7_ek0jc"]
+[ext_resource type="Texture2D" uid="uid://kno75n4j0am6" path="res://assets/sprites/gameover_button.png" id="11_ek0jc"]
 
 [sub_resource type="Curve2D" id="Curve2D_8eqlh"]
 _data = {
@@ -20,9 +23,12 @@ point_count = 5
 [node name="Game" type="Node2D" unique_id=1953090852]
 y_sort_enabled = true
 script = ExtResource("1_75kf4")
-enemy_scenes = Array[PackedScene]([ExtResource("2_8eqlh"), ExtResource("3_notkh"), ExtResource("4_rsq3c"), ExtResource("5_rsq3c")])
-start_rates = Array[float]([30.0, 30.0, 30.0, 10.0])
-end_rates = Array[float]([25.0, 25.0, 25.0, 25.0])
+spawn_start_interval = 1.6
+spawn_end_interval = 0.2
+spawn_ramp_time = 85.0
+enemy_scenes = Array[PackedScene]([ExtResource("2_8eqlh"), ExtResource("3_notkh"), ExtResource("4_rsq3c"), ExtResource("5_rsq3c"), ExtResource("6_xq1fe"), ExtResource("7_ek0jc")])
+start_rates = Array[float]([34.0, 30.0, 34.0, 0.0, 0.0, 0.0])
+end_rates = Array[float]([13.0, 14.0, 13.0, 20.0, 20.0, 20.0])
 
 [node name="Player" parent="." unique_id=700692499 instance=ExtResource("1_8iqbf")]
 position = Vector2(962, 547)
@@ -128,40 +134,18 @@ offset_bottom = 665.0
 text = "QUIT"
 
 [node name="GameOverUI" type="Control" parent="UI" unique_id=1519574285]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 
-[node name="GameOverLabel" type="Label" parent="UI/GameOverUI" unique_id=1713464495]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 711.0
-offset_top = 86.0
-offset_right = 1111.0
-offset_bottom = 245.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_75kf4")
-theme_override_font_sizes/font_size = 64
-text = "YOU LOST!"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
 [node name="ScoreLabel" type="Label" parent="UI/GameOverUI" unique_id=1136809407]
 layout_mode = 0
-offset_left = 848.0
-offset_top = 297.0
-offset_right = 1048.0
-offset_bottom = 397.0
+offset_left = 780.0
+offset_top = 390.0
+offset_right = 1250.0
+offset_bottom = 625.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_75kf4")
 theme_override_font_sizes/font_size = 64
@@ -187,6 +171,14 @@ offset_bottom = 906.0
 theme_override_fonts/font = ExtResource("4_75kf4")
 theme_override_font_sizes/font_size = 64
 text = "QUIT"
+
+[node name="TextureRect" type="TextureRect" parent="UI/GameOverUI" unique_id=419899647]
+layout_mode = 0
+offset_left = 471.0
+offset_top = 150.0
+offset_right = 1458.0
+offset_bottom = 323.0
+texture = ExtResource("11_ek0jc")
 
 [node name="IdleMenuSound" type="AudioStreamPlayer" parent="UI" unique_id=708606697]
 stream = ExtResource("5_fv1l1")

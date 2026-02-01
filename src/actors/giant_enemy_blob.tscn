@@ -1,92 +1,92 @@
-[gd_scene format=3 uid="uid://cgbky7sj6w1vj"]
+[gd_scene format=3 uid="uid://do3bc411yjb3b"]
 
-[ext_resource type="Script" uid="uid://rrn8xd3mdgrw" path="res://src/actors/enemy.gd" id="1_f7rmm"]
-[ext_resource type="Texture2D" uid="uid://d0jocdjjoqx2a" path="res://assets/sprites/e1_walk_fire_anim.png" id="2_f7rmm"]
-[ext_resource type="Texture2D" uid="uid://cttgt4f07ejtt" path="res://assets/sprites/e1_death_anim.png" id="3_roe6p"]
-[ext_resource type="Texture2D" uid="uid://4bdqehevoimo" path="res://assets/sprites/e1_walk_m3_anim.png" id="4_8aa2h"]
-[ext_resource type="AudioStream" uid="uid://dlm8biaaxqq1m" path="res://audio/sfx/enemy_kill_1.wav" id="5_jugth"]
-[ext_resource type="AudioStream" uid="uid://ck8pkjthxq34i" path="res://audio/sfx/enemy_kill_2.wav" id="6_i6m5b"]
-[ext_resource type="AudioStream" uid="uid://bfnuefs4loscq" path="res://audio/sfx/enemy_kill_3.wav" id="7_pbksi"]
-[ext_resource type="AudioStream" uid="uid://d31npex0anpq0" path="res://audio/sfx/arrow_fire_layer_1.wav" id="8_b2wd1"]
-[ext_resource type="AudioStream" uid="uid://cnscvphdni872" path="res://audio/sfx/arrow_fire_layer_2.wav" id="9_d36yn"]
-[ext_resource type="AudioStream" uid="uid://0y68y1m0kmld" path="res://audio/sfx/arrow_fire_layer_3.wav" id="10_8tham"]
+[ext_resource type="Script" uid="uid://rrn8xd3mdgrw" path="res://src/actors/enemy.gd" id="1_mbavs"]
+[ext_resource type="Texture2D" uid="uid://d0jocdjjoqx2a" path="res://assets/sprites/e1_walk_fire_anim.png" id="2_mbavs"]
+[ext_resource type="Texture2D" uid="uid://cttgt4f07ejtt" path="res://assets/sprites/e1_death_anim.png" id="3_p58c2"]
+[ext_resource type="Texture2D" uid="uid://4bdqehevoimo" path="res://assets/sprites/e1_walk_m3_anim.png" id="4_sfw8m"]
+[ext_resource type="AudioStream" uid="uid://dlm8biaaxqq1m" path="res://audio/sfx/enemy_kill_1.wav" id="5_tvm7u"]
+[ext_resource type="AudioStream" uid="uid://ck8pkjthxq34i" path="res://audio/sfx/enemy_kill_2.wav" id="6_6e6io"]
+[ext_resource type="AudioStream" uid="uid://bfnuefs4loscq" path="res://audio/sfx/enemy_kill_3.wav" id="7_akj1u"]
+[ext_resource type="AudioStream" uid="uid://d31npex0anpq0" path="res://audio/sfx/arrow_fire_layer_1.wav" id="8_qf0jj"]
+[ext_resource type="AudioStream" uid="uid://cnscvphdni872" path="res://audio/sfx/arrow_fire_layer_2.wav" id="9_ffcnx"]
+[ext_resource type="AudioStream" uid="uid://0y68y1m0kmld" path="res://audio/sfx/arrow_fire_layer_3.wav" id="10_1se68"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pdfo5"]
-radius = 35.014282
+radius = 93.193344
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1yw1l"]
-atlas = ExtResource("2_f7rmm")
+atlas = ExtResource("2_mbavs")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jugth"]
-atlas = ExtResource("2_f7rmm")
+atlas = ExtResource("2_mbavs")
 region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i6m5b"]
-atlas = ExtResource("2_f7rmm")
+atlas = ExtResource("2_mbavs")
 region = Rect2(0, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pbksi"]
-atlas = ExtResource("2_f7rmm")
+atlas = ExtResource("2_mbavs")
 region = Rect2(0, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b2wd1"]
-atlas = ExtResource("2_f7rmm")
+atlas = ExtResource("2_mbavs")
 region = Rect2(0, 64, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d36yn"]
-atlas = ExtResource("2_f7rmm")
+atlas = ExtResource("2_mbavs")
 region = Rect2(0, 80, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8tham"]
-atlas = ExtResource("2_f7rmm")
+atlas = ExtResource("2_mbavs")
 region = Rect2(0, 96, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_41jmk"]
-atlas = ExtResource("3_roe6p")
+atlas = ExtResource("3_p58c2")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1xe8r"]
-atlas = ExtResource("3_roe6p")
+atlas = ExtResource("3_p58c2")
 region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g68xq"]
-atlas = ExtResource("3_roe6p")
+atlas = ExtResource("3_p58c2")
 region = Rect2(0, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ow1vn"]
-atlas = ExtResource("3_roe6p")
+atlas = ExtResource("3_p58c2")
 region = Rect2(0, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lurhw"]
-atlas = ExtResource("4_8aa2h")
+atlas = ExtResource("4_sfw8m")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ni0yq"]
-atlas = ExtResource("4_8aa2h")
+atlas = ExtResource("4_sfw8m")
 region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wcvmq"]
-atlas = ExtResource("4_8aa2h")
+atlas = ExtResource("4_sfw8m")
 region = Rect2(0, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0mxus"]
-atlas = ExtResource("4_8aa2h")
+atlas = ExtResource("4_sfw8m")
 region = Rect2(0, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ws28c"]
-atlas = ExtResource("4_8aa2h")
+atlas = ExtResource("4_sfw8m")
 region = Rect2(0, 64, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aa714"]
-atlas = ExtResource("4_8aa2h")
+atlas = ExtResource("4_sfw8m")
 region = Rect2(0, 80, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qcu01"]
-atlas = ExtResource("4_8aa2h")
+atlas = ExtResource("4_sfw8m")
 region = Rect2(0, 96, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_xwthg"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_bixxp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -158,44 +158,44 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7ed8l"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tvm7u"]
 streams_count = 3
-stream_0/stream = ExtResource("5_jugth")
-stream_1/stream = ExtResource("6_i6m5b")
-stream_2/stream = ExtResource("7_pbksi")
+stream_0/stream = ExtResource("5_tvm7u")
+stream_1/stream = ExtResource("6_6e6io")
+stream_2/stream = ExtResource("7_akj1u")
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4tn5t"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6e6io"]
 streams_count = 6
-stream_0/stream = ExtResource("8_b2wd1")
-stream_1/stream = ExtResource("9_d36yn")
-stream_2/stream = ExtResource("10_8tham")
+stream_0/stream = ExtResource("8_qf0jj")
+stream_1/stream = ExtResource("9_ffcnx")
+stream_2/stream = ExtResource("10_1se68")
 
-[node name="EnemyBlob" type="CharacterBody2D" unique_id=1077009339 groups=["enemies"]]
+[node name="GiantEnemyBlob" type="CharacterBody2D" unique_id=1284639405 groups=["enemies"]]
 z_index = 2
 z_as_relative = false
 collision_layer = 2
 collision_mask = 2
 safe_margin = 0.8
-script = ExtResource("1_f7rmm")
-move_speed = 250.0
-drop_exp = 20
+script = ExtResource("1_mbavs")
+max_health = 8
+move_speed = 200.0
+drop_exp = 35
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=634576994]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1891739595]
 light_mask = 2
 visibility_layer = 2
 position = Vector2(10, -10)
 shape = SubResource("CircleShape2D_pdfo5")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=44999409]
-position = Vector2(10, -47)
-scale = Vector2(8, 8)
-sprite_frames = SubResource("SpriteFrames_xwthg")
-animation = &"burning"
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1982583793]
+position = Vector2(12.000008, -97)
+scale = Vector2(18.875, 20.99444)
+sprite_frames = SubResource("SpriteFrames_bixxp")
 autoplay = "default"
 
-[node name="EnemyKill" type="AudioStreamPlayer" parent="AnimatedSprite2D" unique_id=1932111570]
-stream = SubResource("AudioStreamRandomizer_7ed8l")
+[node name="EnemyKill" type="AudioStreamPlayer" parent="AnimatedSprite2D" unique_id=733857477]
+stream = SubResource("AudioStreamRandomizer_tvm7u")
 volume_db = -10.0
 
-[node name="BurnEnemy" type="AudioStreamPlayer" parent="AnimatedSprite2D" unique_id=612284900]
-stream = SubResource("AudioStreamRandomizer_4tn5t")
+[node name="BurnEnemy" type="AudioStreamPlayer" parent="AnimatedSprite2D" unique_id=1434631878]
+stream = SubResource("AudioStreamRandomizer_6e6io")

@@ -135,7 +135,6 @@ collision_layer = 2
 collision_mask = 2
 safe_margin = 0.8
 script = ExtResource("1_oylxq")
-max_health = 5
 drop_exp = 35
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=634576994]

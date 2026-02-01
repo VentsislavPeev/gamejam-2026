@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var move_speed := 300.0
 @export var drop_chance := 0.5
 @export var drop_exp := 25
+@export var drop_score := 20
 
 var drop_items = 0
 var health: int
@@ -25,21 +26,22 @@ func _ready():
 	health = max_health
 	
 func _physics_process(delta: float):
-	
+	# 1. Calculate direction once
 	var direction_to_player = global_position.direction_to(player.global_position)
+	
+	# 2. Handle sprite flipping
+	animated_sprite.flip_h = direction_to_player.x < 0
+	
+	# 3. Combine normal movement AND knockback
 	var normal_velocity = direction_to_player * move_speed
 	velocity = normal_velocity + knockback_vector
 	
-	var direction = global_position.direction_to(player.global_position)
-	if direction.x < 0:
-		animated_sprite.flip_h = true;
-	else: animated_sprite.flip_h = false;
-	velocity = direction * move_speed
+	# 4. Move
 	move_and_slide()
 	
+	# 5. Decay knockback over time
 	if knockback_vector != Vector2.ZERO:
 		knockback_vector = knockback_vector.move_toward(Vector2.ZERO, 500 * delta)
-
 func take_fire_dmg(duration: float = 3.0, tick: float = 1.0) -> void:
 	if dot_active:
 		return
@@ -49,14 +51,14 @@ func take_fire_dmg(duration: float = 3.0, tick: float = 1.0) -> void:
 	print('Burnt')
 	
 	#arrow_fire
-	animated_sprite.play('burning')
 
 	var elapsed := 0.0
 	while elapsed < duration and is_inside_tree():
-		take_dmg()
+		take_dmg() #changeble
 		await get_tree().create_timer(tick).timeout
 		elapsed += tick
 	dot_active = false
+	animated_sprite.play("default")
 
 func get_knocked_back(power):
 	var direction = global_position.direction_to(player.global_position)
@@ -74,15 +76,17 @@ func take_dmg(amount: int = 1):
 func die():
 	#enemy_kill
 	player.gain_experience(drop_exp)
+	player.gain_score(drop_score)
 	enemy_kill_sound.play()
 	await get_tree().create_timer(0.1).timeout
 	animated_sprite.play('death')
 	await animated_sprite.animation_finished
-	queue_free()
 	if randf() <= drop_chance and drop_items < 1:
 		drop_item()
 		drop_items += 1
-		
+	queue_free()
+
+
 func drop_item():
 	var item = item_scene.instantiate()
 	item.position = position

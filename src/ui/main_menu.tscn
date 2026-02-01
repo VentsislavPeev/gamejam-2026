@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://cu5gn48pkvjt0"]
 
-[ext_resource type="Script" uid="uid://y1pdmtjps3l5" path="res://src/ui/main_menu.gd" id="1_06t4h"]
+[ext_resource type="Script" path="res://src/ui/main_menu.gd" id="1_06t4h"]
+[ext_resource type="Texture2D" uid="uid://c881ydql2qc26" path="res://assets/sprites/background.png" id="2_5mgu5"]
 [ext_resource type="FontFile" uid="uid://bs4ww54t7be0" path="res://themes/fonts/Xolonium-Regular.ttf" id="2_7vrkn"]
 [ext_resource type="AudioStream" uid="uid://c2mpintshhkcq" path="res://audio/sfx/ambiance_loop.wav" id="3_f0s2b"]
+[ext_resource type="Texture2D" uid="uid://ii5drvqm0sd4" path="res://assets/sprites/start_button.png" id="4_h03rr"]
 
 [node name="MainMenu" type="Control" unique_id=507938451]
 layout_mode = 3
@@ -11,28 +13,25 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_06t4h")
 
-[node name="TitleLable" type="Label" parent="." unique_id=1463334359]
-layout_mode = 1
-offset_left = 485.0
-offset_top = 222.0
-offset_right = 1519.0
-offset_bottom = 539.0
-theme_override_fonts/font = ExtResource("2_7vrkn")
-theme_override_font_sizes/font_size = 100
-text = "Beat The Clock!"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1654859824]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 26.0
+offset_right = 1927.0
+offset_bottom = 1083.0
+texture = ExtResource("2_5mgu5")
 
 [node name="StartButton" type="Button" parent="." unique_id=1832483906]
 layout_mode = 0
-offset_left = 829.0
-offset_top = 758.0
-offset_right = 1129.0
-offset_bottom = 908.0
+offset_left = 498.0
+offset_top = 413.0
+offset_right = 966.0
+offset_bottom = 575.0
 theme_override_fonts/font = ExtResource("2_7vrkn")
 theme_override_font_sizes/font_size = 64
-text = "START"
+icon = ExtResource("4_h03rr")
+flat = true
+expand_icon = true
 
 [node name="IdleMenuSound" type="AudioStreamPlayer" parent="." unique_id=1427332533]
 stream = ExtResource("3_f0s2b")

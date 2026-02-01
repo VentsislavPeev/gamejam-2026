@@ -12,6 +12,20 @@ var textures = [mask_earth, mask_fire, mask_lightning]
 
 func _ready():
 	$Sprite2D.texture = textures[item_type]
+	
+	start_floating()
+
+
+func start_floating():
+	# Create a tween and set it to loop infinitely
+	var tween = create_tween().set_loops()
+	
+	# Move the sprite UP by 10 pixels over 1 second
+	# Use 'relative' so it moves 10px from its current spot
+	tween.tween_property($Sprite2D, "position:y", -10.0, 1.0).as_relative().set_trans(Tween.TRANS_SINE)
+	
+	# Move the sprite DOWN by 10 pixels over 1 second
+	tween.tween_property($Sprite2D, "position:y", 10.0, 1.0).as_relative().set_trans(Tween.TRANS_SINE)
 
 
 func _on_body_entered(body):
@@ -24,4 +38,3 @@ func _on_body_entered(body):
 		body.on_item_pickup(2)
 	mask_pickup_sound.play()
 	queue_free()
-	

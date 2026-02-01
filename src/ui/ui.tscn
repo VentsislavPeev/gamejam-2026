@@ -2,6 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://bs4ww54t7be0" path="res://themes/fonts/Xolonium-Regular.ttf" id="1_jlntk"]
 [ext_resource type="AudioStream" uid="uid://c2mpintshhkcq" path="res://audio/sfx/ambiance_loop.wav" id="2_qemve"]
+[ext_resource type="Texture2D" uid="uid://kno75n4j0am6" path="res://assets/sprites/gameover_button.png" id="3_qemve"]
 
 [node name="UI" type="CanvasLayer" unique_id=773741441]
 
@@ -106,10 +107,10 @@ autowrap_mode = 2
 
 [node name="ScoreLabel" type="Label" parent="GameOverUI" unique_id=375938154]
 layout_mode = 0
-offset_left = 848.0
-offset_top = 297.0
-offset_right = 1048.0
-offset_bottom = 397.0
+offset_left = 726.0
+offset_top = 289.0
+offset_right = 1198.0
+offset_bottom = 525.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_jlntk")
 theme_override_font_sizes/font_size = 64
@@ -119,9 +120,9 @@ vertical_alignment = 1
 [node name="RetryButton" type="Button" parent="GameOverUI" unique_id=1053952539]
 layout_mode = 0
 offset_left = 368.0
-offset_top = 693.0
+offset_top = 700.0
 offset_right = 768.0
-offset_bottom = 893.0
+offset_bottom = 900.0
 theme_override_fonts/font = ExtResource("1_jlntk")
 theme_override_font_sizes/font_size = 64
 text = "RETRY"
@@ -129,9 +130,9 @@ text = "RETRY"
 [node name="QuitButton" type="Button" parent="GameOverUI" unique_id=2135070576]
 layout_mode = 0
 offset_left = 1199.0
-offset_top = 706.0
+offset_top = 700.0
 offset_right = 1599.0
-offset_bottom = 906.0
+offset_bottom = 900.0
 theme_override_fonts/font = ExtResource("1_jlntk")
 theme_override_font_sizes/font_size = 64
 text = "QUIT"
@@ -139,3 +140,10 @@ text = "QUIT"
 [node name="IdleMenuSound" type="AudioStreamPlayer" parent="." unique_id=2134977197]
 stream = ExtResource("2_qemve")
 volume_db = 24.0
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=816966028]
+offset_left = 485.0
+offset_top = 213.0
+offset_right = 1472.0
+offset_bottom = 386.0
+texture = ExtResource("3_qemve")

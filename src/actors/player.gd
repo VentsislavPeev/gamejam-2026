@@ -22,9 +22,9 @@ signal dashed(dash)
 @export var experience = 0
 
 @export var level = 1
-@export var speed = 600
+@export var speed = 500
 @export var damage = 1
-@export var DMG_CAP = 30
+@export var DMG_CAP = 40
 const BASE_LEVEL_XP = 100
 
 # --- DASH VARIABLES ---
@@ -42,7 +42,7 @@ var can_dash = true
 # ----------------------
 
 var mask_stack: Array = []
-var score = 0
+var player_score = 0
 
 func _ready():
 	mask_stack.append(-1)
@@ -53,6 +53,8 @@ func _ready():
 
 
 func _physics_process(delta: float):
+	if(is_dead):
+		return
 	if is_dashing:
 		move_and_slide()
 		return
@@ -106,8 +108,6 @@ func take_damage(amount: float):
 
 func die():
 	is_dead = true
-	print("Die function started!") # <--- Add this
-	await animated_sprite.animation_finished
 	animated_sprite.play('die')
 	await animated_sprite.animation_finished
 	print("Animation finished!")   # <--- And this
@@ -115,7 +115,7 @@ func die():
 	#player_death_sound.play()
 	#await sound
 	game.game_over()
-
+	queue_free()
 
 func perform_dash(dash_direction: Vector2):
 	dashed.emit(dash_cooldown)
@@ -143,12 +143,16 @@ func perform_dash(dash_direction: Vector2):
 func calculate_experience_to_level(level: int) -> float:
 	return (level - 0.5) ** 2 * BASE_LEVEL_XP
 
+
 func gain_experience(exp: int) -> void:
 	var exp_to_level = calculate_experience_to_level(level)
 	experience += exp
 	exp_changed.emit(experience)
 	if experience >= exp_to_level:
 		level_up()
+
+func gain_score(score: int):
+	player_score += score
 
 func level_up():
 	lvlup_animation.play('default')
@@ -159,9 +163,9 @@ func level_up():
 	if hp_bar:
 		hp_bar.max_value = max_health
 		
-	damage += 0.2
+	damage += 0.5
 	speed += 20
-	weapon_timer.wait_time -= 0.05
+	weapon_timer.wait_time -= 0.02
 	print(weapon_timer.wait_time)
 	
 func keep_max_health():

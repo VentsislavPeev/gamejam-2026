@@ -1,7 +1,6 @@
 extends Node2D
 #note for self, make a separate spawn time scene
 #instead of using this script to control spawn
-var score: int = 0
 var max_health: int = 100
 var current_health: int = 100
 var elapsed := 0.0
@@ -62,20 +61,6 @@ func pick_enemy_by_rate() -> PackedScene:
 			return enemy_scenes[i]
 
 	return enemy_scenes.back()
-#func pick_enemy_by_rate() -> PackedScene:
-	#var total := 0.0
-	#for r in spawn_rates:
-		#total += r
-#
-	#var roll := randf() * total
-	#var acc := 0.0
-#
-	#for i in enemy_scenes.size():
-		#acc += spawn_rates[i]
-		#if roll <= acc:
-			#return enemy_scenes[i]
-#
-	#return enemy_scenes.back()
 
 func spawn_mob():
 	var scene := pick_enemy_by_rate()
@@ -103,12 +88,11 @@ func _input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	if game_active:
 		# Update UI
-		score_label.text = "Score: %d" % score
+		score_label.text = "Score: %d" % $Player.player_score
 		time_label.text = "Time: %d:%02d" % [int(timer.time_left / 60), int(timer.time_left) % 60]
 		if game_active:
 			elapsed += delta
 		# TODO: add_score(10) при hit на mob
-		# TODO: take_damage(20) при hit
 	
 func toggle_pause() -> void:
 	if get_tree().paused:
@@ -122,7 +106,7 @@ func game_over() -> void:
 	game_active = false
 	get_tree().paused = true
 	game_over_ui.visible = true
-	game_over_score_label.text = "Final Score: %d" % score
+	game_over_score_label.text = "Final Score: %d" % $Player.player_score
 	# Също ако health <= 0: game_over()
 
 func take_damage(amount: int) -> void:
@@ -130,9 +114,6 @@ func take_damage(amount: int) -> void:
 	health_bar.value = current_health
 	if current_health <= 0:
 		game_over()
-
-func add_score(points: int) -> void:
-	score += points
 
 # Button functions
 func _on_continue_button_pressed() -> void:
