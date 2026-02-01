@@ -11,7 +11,6 @@ var item_scene := preload("res://src/actors/item.tscn")
 @onready var burning_enemy = $AnimatedSprite2D/BurnEnemy
 const DROP_CHANCE: float = 0.5
 const DROP_EXP: int = 25
-const DROP_CHANCE: float = 0.8
 
 func _physics_process(delta: float):
 	var direction = global_position.direction_to(player.global_position)

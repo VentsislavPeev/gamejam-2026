@@ -31,27 +31,16 @@ offset_bottom = 40.0
 script = ExtResource("3_27jxx")
 
 [node name="t1" type="TextureRect" parent="Control" unique_id=793047214]
-unique_name_in_owner = true
 layout_mode = 0
-offset_left = 749.0
+offset_left = 781.0
 offset_top = 837.0
-offset_right = 1014.09546
+offset_right = 1046.0955
 offset_bottom = 1079.0
 
 [node name="t2" type="TextureRect" parent="Control" unique_id=77279793]
-unique_name_in_owner = true
 layout_mode = 0
-offset_left = 825.0
+offset_left = 781.0
 offset_top = 837.0
-offset_right = 1090.0955
+offset_right = 1046.0955
 offset_bottom = 1079.0
 flip_h = true
-
-[node name="ti1" type="Timer" parent="Control" unique_id=1909674534]
-wait_time = 5.0
-
-[node name="ti2" type="Timer" parent="Control" unique_id=90501249]
-wait_time = 5.0
-
-[connection signal="timeout" from="Control/ti1" to="Control" method="_on_ti_1_timeout"]
-[connection signal="timeout" from="Control/ti2" to="Control" method="_on_ti_2_timeout"]
