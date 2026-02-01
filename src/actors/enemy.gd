@@ -48,7 +48,7 @@ func take_fire_dmg(duration: float = 3.0, tick: float = 1.0) -> void:
 
 	var elapsed := 0.0
 	while elapsed < duration and is_inside_tree():
-		take_dmg()
+		take_dmg() #changeble
 		await get_tree().create_timer(tick).timeout
 		elapsed += tick
 	dot_active = false
