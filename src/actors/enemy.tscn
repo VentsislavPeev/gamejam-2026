@@ -175,8 +175,8 @@ stream_2/stream = ExtResource("10_6axsv")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_a6t83"]
 streams_count = 3
-stream_0/stream = ExtResource("11_7ed8l")
-stream_1/stream = ExtResource("12_4tn5t")
+stream_0/stream = ExtResource("12_4tn5t")
+stream_1/stream = ExtResource("11_7ed8l")
 stream_2/stream = ExtResource("13_fj5g8")
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1077009339 groups=["enemies"]]
@@ -206,8 +206,8 @@ volume_db = -10.0
 
 [node name="BurnEnemy" type="AudioStreamPlayer" parent="AnimatedSprite2D" unique_id=612284900]
 stream = SubResource("AudioStreamRandomizer_4tn5t")
-volume_db = -10.0
+volume_db = 24.0
 
 [node name="ArrowNormalHit" type="AudioStreamPlayer" parent="AnimatedSprite2D" unique_id=646654026]
 stream = SubResource("AudioStreamRandomizer_a6t83")
-volume_db = -10.0
+volume_db = 24.0

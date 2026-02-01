@@ -44,7 +44,6 @@ func take_fire_dmg(duration: float = 3.0, tick: float = 1.0) -> void:
 	if dot_active:
 		return
 	dot_active = true
-	arrow_hit_sound.play()
 	burning_enemy_sound.play()
 	await get_tree().create_timer(0.1).timeout
 	print('Burnt')
@@ -68,6 +67,7 @@ func get_knocked_back(power):
 
 func take_dmg(amount: int = 1):
 	health -= amount
+	arrow_hit_sound.play()
 	if health <= 0:
 		die()
 

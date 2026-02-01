@@ -7,8 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://bbo7hwjyvwya4" path="res://src/actors/weapon.tscn" id="3_foe4e"]
 [ext_resource type="Texture2D" uid="uid://c1kb2ai07fw5x" path="res://assets/sprites/mc_hurt_anim.png" id="3_l3h4q"]
 [ext_resource type="Texture2D" uid="uid://bhknlwd6cl13n" path="res://assets/sprites/mc_death_anim.png" id="3_urqtb"]
-[ext_resource type="PackedScene" uid="uid://de28liwa3olvy" path="res://assets/themes/hud.tscn" id="6_1e0ww"]
+[ext_resource type="PackedScene" path="res://assets/themes/hud.tscn" id="6_1e0ww"]
 [ext_resource type="Texture2D" uid="uid://dwx2gmiuvtj4t" path="res://assets/sprites/lvlup.png" id="7_d8py6"]
+[ext_resource type="AudioStream" uid="uid://jacosxfha2gp" path="res://audio/sfx/player_dash.wav" id="10_olup0"]
+[ext_resource type="AudioStream" uid="uid://ctj387lwpaxdl" path="res://audio/sfx/player_death.wav" id="11_l81xe"]
+[ext_resource type="AudioStream" uid="uid://bhq06t8xnqq22" path="res://audio/sfx/player_damaged_1.wav" id="12_ayell"]
+[ext_resource type="AudioStream" uid="uid://cburvvymj3ybk" path="res://audio/sfx/player_damaged_2.wav" id="13_md4e6"]
+[ext_resource type="AudioStream" uid="uid://bthupye2icx61" path="res://audio/sfx/player_damaged_3.wav" id="14_2bg44"]
+[ext_resource type="AudioStream" uid="uid://btj660njucrjp" path="res://audio/sfx/char_shoot_basic.wav" id="15_l81xe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_olup0"]
 atlas = ExtResource("2_1oxso")
@@ -380,54 +386,11 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bcejv"]
-atlas = ExtResource("7_d8py6")
-region = Rect2(0, 0, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_owrex"]
-atlas = ExtResource("7_d8py6")
-region = Rect2(0, 20, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u5m0r"]
-atlas = ExtResource("7_d8py6")
-region = Rect2(0, 40, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2d042"]
-atlas = ExtResource("7_d8py6")
-region = Rect2(0, 60, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bixb0"]
-atlas = ExtResource("7_d8py6")
-region = Rect2(0, 80, 20, 20)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_u666v"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bcejv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_owrex")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u5m0r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2d042")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bixb0")
-}, {
-"duration": 1.0,
-"texture": null
-}],
-"loop": false,
-"name": &"default",
-"speed": 10.0
-}]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ggk0d"]
+streams_count = 3
+stream_0/stream = ExtResource("12_ayell")
+stream_1/stream = ExtResource("13_md4e6")
+stream_2/stream = ExtResource("14_2bg44")
 
 [node name="Player" type="CharacterBody2D" unique_id=700692499 groups=["player"]]
 z_index = 1
@@ -439,7 +402,7 @@ process_mode = 3
 position = Vector2(0.9999924, -68)
 scale = Vector2(5.840909, 5.840909)
 sprite_frames = SubResource("SpriteFrames_l3h4q")
-animation = &"die"
+animation = &"shoot"
 autoplay = "shoot"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=470462921]
@@ -493,6 +456,20 @@ frame = 6
 frame_progress = 1.0
 
 [node name="Dash" type="Timer" parent="." unique_id=184134296]
+
+[node name="DashSound" type="AudioStreamPlayer" parent="." unique_id=1858539170]
+stream = ExtResource("10_olup0")
+
+[node name="PlayerDeath" type="AudioStreamPlayer" parent="." unique_id=1121756501]
+stream = ExtResource("11_l81xe")
+
+[node name="PlayerHurt" type="AudioStreamPlayer" parent="." unique_id=1544913687]
+stream = SubResource("AudioStreamRandomizer_ggk0d")
+volume_db = -10.0
+
+[node name="CharShoot" type="AudioStreamPlayer" parent="." unique_id=114403673]
+stream = ExtResource("15_l81xe")
+volume_db = -10.0
 
 [connection signal="timeout" from="ItemDuration" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="ItemDuration2" to="." method="_on_item_duration_2_timeout"]

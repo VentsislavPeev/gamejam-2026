@@ -10,6 +10,12 @@ signal dashed(dash)
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var lvlup_animation = $lvlup
 @onready var weapon_timer = $Weapon/Timer
+
+@onready var dash_sound = $DashSound
+@onready var player_death_sound = $PlayerDeath
+@onready var player_hurt_sound = $PlayerHurt
+@onready var player_shoot_sound = $CharShoot
+
 @onready var hp_bar = $Camera2D/HUD/TextureProgressBar 
 @export var health = 100.0 # Make sure this is a float for delta math
 @export var max_health = 100
@@ -84,13 +90,16 @@ func take_damage(amount: float):
 		hp_bar.value = health
 		
 	if health <= 0.0:
+		#player_death_sound.play()
 		die()
 	if is_dead:
 		return
 	if can_hurt_animation:
+		#player_hurt_sound.play()
 		animated_sprite.play('hurt')
 		await animated_sprite.animation_finished
 		animated_sprite.play('shoot')
+		player_shoot_sound.play()
 		can_hurt_animation = false
 		can_hurt_animation = true
 
@@ -102,13 +111,21 @@ func die():
 	animated_sprite.play('die')
 	await animated_sprite.animation_finished
 	print("Animation finished!")   # <--- And this
+	#add die sound
+	#player_death_sound.play()
+	#await sound
 	game.game_over()
 
 
 func perform_dash(dash_direction: Vector2):
 	dashed.emit(dash_cooldown)
 	$HurtBox/CollisionShape2D.disabled = true;
+	#add dash sound
 	animated_sprite.play('dash')
+	#await animated_sprite.animation_finished
+	dash_sound.play()
+	
+	
 	is_dashing = true
 	can_dash = false
 	
@@ -116,6 +133,7 @@ func perform_dash(dash_direction: Vector2):
 	
 	await get_tree().create_timer(dash_duration).timeout
 	animated_sprite.play('shoot')
+	player_shoot_sound.play()
 	is_dashing = false
 	$HurtBox/CollisionShape2D.disabled = false;
 	await get_tree().create_timer(dash_cooldown).timeout

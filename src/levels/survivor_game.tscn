@@ -2,13 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://dypcdmkbf2y1b" path="res://src/actors/player.tscn" id="1_8iqbf"]
 [ext_resource type="Script" uid="uid://tpk0kiobwpv5" path="res://src/levels/survivor_game.gd" id="1_75kf4"]
-[ext_resource type="PackedScene" uid="uid://cgbky7sj6w1vj" path="res://src/actors/enemy_blob.tscn" id="2_8eqlh"]
+[ext_resource type="PackedScene" path="res://src/actors/enemy_blob.tscn" id="2_8eqlh"]
 [ext_resource type="PackedScene" uid="uid://cpq728pdgjtsk" path="res://assets/themes/test_bg.tscn" id="3_h101p"]
-[ext_resource type="PackedScene" uid="uid://j75i2205jn5i" path="res://src/actors/enemy_bush.tscn" id="3_notkh"]
+[ext_resource type="PackedScene" path="res://src/actors/enemy_bush.tscn" id="3_notkh"]
 [ext_resource type="FontFile" uid="uid://bs4ww54t7be0" path="res://themes/fonts/Xolonium-Regular.ttf" id="4_75kf4"]
-[ext_resource type="PackedScene" uid="uid://dwh27nohm65n6" path="res://src/actors/enemy_tree.tscn" id="4_rsq3c"]
+[ext_resource type="PackedScene" path="res://src/actors/enemy_tree.tscn" id="4_rsq3c"]
 [ext_resource type="AudioStream" uid="uid://c2mpintshhkcq" path="res://audio/sfx/ambiance_loop.wav" id="5_fv1l1"]
-[ext_resource type="PackedScene" uid="uid://ygsewsfu67q7" path="res://src/actors/giant_enemy_trees.tscn" id="5_rsq3c"]
+[ext_resource type="PackedScene" path="res://src/actors/giant_enemy_trees.tscn" id="5_rsq3c"]
 [ext_resource type="AudioStream" uid="uid://du6qnhxx4m27i" path="res://audio/music/theme.wav" id="6_gkphq"]
 
 [sub_resource type="Curve2D" id="Curve2D_8eqlh"]

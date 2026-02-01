@@ -1,6 +1,6 @@
 extends Area2D
 signal triple_shot_signal(triple)
-@onready var shooting = $CharShoot
+@onready var shooting_sound = $CharShoot
 
 const PROJECTILE = preload("res://src/actors/projectile.tscn")
 
@@ -15,7 +15,7 @@ func _physics_process(delta: float):
 			$TripleShotTimer.start() # Restart cooldown
 	
 func shoot():
-	shooting.play()
+	shooting_sound.play()
 	var new_projectile = PROJECTILE.instantiate()
 	new_projectile.global_position = %ShootingPoint.global_position
 	new_projectile.global_rotation = %ShootingPoint.global_rotation
@@ -23,7 +23,7 @@ func shoot():
 
 func shoot_spread():
 	triple_shot_signal.emit(2)
-	shooting.play()
+	shooting_sound.play()
 	triple_shot_signal.emit()
 	# The angles for the 3 shots (Left, Center, Right)
 	var angles_deg = [-15, 0, 15]
