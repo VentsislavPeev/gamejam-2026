@@ -7,8 +7,9 @@ var item_scene := preload("res://src/actors/item.tscn")
 @onready var main_scene = get_node("/root/Game")
 @onready var animated_sprite = $AnimatedSprite2D
 
-@onready var enemy_kill = $AnimatedSprite2D/EnemyKill
-@onready var burning_enemy = $AnimatedSprite2D/BurnEnemy
+@onready var arrow_hit_sound = $AnimatedSprite2D/ArrowNormalHit
+@onready var enemy_kill_sound = $AnimatedSprite2D/EnemyKill
+@onready var burning_enemy_sound = $AnimatedSprite2D/BurnEnemy
 const DROP_CHANCE: float = 0.1
 
 func _physics_process(delta: float):
@@ -23,7 +24,9 @@ func take_fire_dmg(duration: float = 3.0, tick: float = 1.0) -> void:
 	if dot_active:
 		return
 	dot_active = true
-	burning_enemy.play()
+	arrow_hit_sound.play()
+	burning_enemy_sound.play()
+	await get_tree().create_timer(0.1).timeout
 	print('Burnt')
 	
 	#arrow_fire
@@ -44,7 +47,8 @@ func take_dmg(amount: int = 1):
 func die():
 	if health == 0:
 		#enemy_kill
-		enemy_kill.play()
+		enemy_kill_sound.play()
+		await get_tree().create_timer(0.1).timeout
 		animated_sprite.play('death')
 		await animated_sprite.animation_finished
 		queue_free()
