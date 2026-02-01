@@ -208,6 +208,13 @@ position = Vector2(6, -34)
 shape = SubResource("CircleShape2D_foe4e")
 debug_color = Color(0.9969434, 0, 0.18584156, 0.41960785)
 
-[node name="ItemDuration" type="Timer" parent="." unique_id=1578621819]
+[node name="ItemDuration" type="Timer" parent="." unique_id=1528901738]
+wait_time = 5.0
+one_shot = true
 
-[connection signal="timeout" from="ItemDuration" to="." method="_on_item_duration_timeout"]
+[node name="ItemDuration2" type="Timer" parent="." unique_id=1241267615]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="ItemDuration" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="ItemDuration2" to="." method="_on_item_duration_2_timeout"]

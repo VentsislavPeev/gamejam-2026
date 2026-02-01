@@ -9,8 +9,9 @@ var item_scene := preload("res://src/actors/item.tscn")
 
 @onready var enemy_kill = $AnimatedSprite2D/EnemyKill
 @onready var burning_enemy = $AnimatedSprite2D/BurnEnemy
-const DROP_CHANCE: float = 0.1
+const DROP_CHANCE: float = 0.5
 const DROP_EXP: int = 25
+const DROP_CHANCE: float = 0.8
 
 func _physics_process(delta: float):
 	var direction = global_position.direction_to(player.global_position)
@@ -34,7 +35,6 @@ func take_fire_dmg(duration: float = 3.0, tick: float = 1.0) -> void:
 		take_dmg()
 		await get_tree().create_timer(tick).timeout
 		elapsed += tick
-
 	dot_active = false
 
 func take_dmg(amount: int = 1):
@@ -43,6 +43,7 @@ func take_dmg(amount: int = 1):
 		die()
 
 func die():
+<<<<<<< HEAD
 	#enemy_kill
 	player.gain_experience(DROP_EXP)
 	enemy_kill.play()
@@ -51,6 +52,16 @@ func die():
 	queue_free()
 	if randf() <= DROP_CHANCE:
 		drop_item()
+=======
+	if health <= 0:
+		#enemy_kill
+		enemy_kill.play()
+		animated_sprite.play('death')
+		await animated_sprite.animation_finished
+		queue_free()
+		if randf() <= DROP_CHANCE:
+			drop_item()
+>>>>>>> c12f7a0fdf1fa044a0b2d45089d37517485bd33c
 		
 func drop_item():
 	var item = item_scene.instantiate()
