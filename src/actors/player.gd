@@ -3,15 +3,16 @@ extends CharacterBody2D
 # --- SIGNALS ---
 signal health_changed(new_health)
 signal mask_changed(masks)
+signal exp_changed(exp)
 
+@onready var game = get_node("/root/Game")
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var lvlup_animation = $lvlup
+@onready var weapon_timer = $Weapon/Timer
+@onready var hp_bar = $Camera2D/HUD/TextureProgressBar 
 @export var health = 100.0 # Make sure this is a float for delta math
 @export var max_health = 100
 @export var experience = 0
-@onready var weapon_timer = $Weapon/Timer
-# Use the onready var you already defined (don't re-declare it inside functions)
-@onready var hp_bar = $Camera2D/HUD/TextureProgressBar 
 
 @export var level = 1
 @export var speed = 600
@@ -29,10 +30,11 @@ var can_hurt_animation = true
 @export var dash_cooldown = 1.0
 var is_dashing = false
 var can_dash = true
+
 # ----------------------
 
 var mask_stack: Array = []
-
+var score = 0
 
 func _ready():
 	mask_stack.append(-1)
@@ -89,9 +91,12 @@ func take_damage(amount: float):
 		await get_tree().create_timer(hurt_cooldown).timeout
 		can_hurt_animation = true
 
+
 func die():
-	print("DIED")
-	# Add your game over logic here (e.g., get_tree().reload_current_scene())
+	animated_sprite.play('die')
+	game.game_over()
+
+
 
 func perform_dash(dash_direction: Vector2):
 	animated_sprite.play('dash')
@@ -113,6 +118,7 @@ func calculate_experience_to_level(level: int) -> float:
 func gain_experience(exp: int) -> void:
 	var exp_to_level = calculate_experience_to_level(level)
 	experience += exp
+	exp_changed.emit(experience)
 	if experience >= exp_to_level:
 		level_up()
 
@@ -140,10 +146,10 @@ func keep_max_health():
 func on_item_pickup(value: int):
 	if mask_stack[0] != -1 and mask_stack[1] != -1:
 		if($ItemDuration.wait_time >= $ItemDuration2.wait_time):
-			mask_stack[1] = value
+			mask_stack[0] = value
 			$ItemDuration2.start()
 		else: 
-			mask_stack[0] = value
+			mask_stack[1] = value
 			$ItemDuration.start()
 	elif mask_stack[0] != -1:
 		mask_stack[1] = value

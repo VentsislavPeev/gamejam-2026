@@ -48,8 +48,12 @@ func _process(delta: float) -> void:
 		# TODO: take_damage(20) при hit
 
 func toggle_pause() -> void:
-	get_tree().paused = !get_tree().paused
-	pause_ui.visible = get_tree().paused
+	if get_tree().paused:
+		get_tree().paused = false
+		pause_ui.visible = false
+	else:
+		get_tree().paused = true
+		pause_ui.visible = true
 
 func game_over() -> void:
 	game_active = false
@@ -73,6 +77,7 @@ func _on_continue_button_pressed() -> void:
 
 
 func _on_quit_button_pressed() -> void:
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://src/ui/main_menu.tscn")
 
 
@@ -81,8 +86,10 @@ func _on_clock_timeout() -> void:
 
 
 func _on_pause_retry_button_pressed() -> void:
+	get_tree().paused = false
 	get_tree().reload_current_scene()
 
 
 func _on_quit_retry_button_pressed() -> void:
+	get_tree().paused = false
 	get_tree().reload_current_scene()

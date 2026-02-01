@@ -1,8 +1,13 @@
 [gd_scene format=3 uid="uid://de28liwa3olvy"]
 
+[ext_resource type="Script" uid="uid://c4w5wxi8oa8gd" path="res://assets/themes/hud.gd" id="1_1qgl1"]
+[ext_resource type="Script" uid="uid://bavp63bgr5kg4" path="res://assets/themes/hp_progress_bar.gd" id="2_efmde"]
 [ext_resource type="Texture2D" uid="uid://cskn2n0j5qtqc" path="res://assets/sprites/hp_progress.png" id="2_lpmwf"]
 [ext_resource type="Script" uid="uid://co7igtu5edtkr" path="res://assets/themes/control.gd" id="3_27jxx"]
 [ext_resource type="Script" uid="uid://c5tpjqjlmen3n" path="res://assets/themes/texture_progress_bar.gd" id="3_lpmwf"]
+[ext_resource type="Texture2D" uid="uid://6os6qqbhi252" path="res://assets/sprites/exp_under.png" id="4_61qfh"]
+[ext_resource type="Texture2D" uid="uid://bv8sxcs1edg4q" path="res://assets/sprites/exp_progress.png" id="5_efmde"]
+[ext_resource type="FontFile" uid="uid://cqq32v5qpyxv2" path="res://assets/PixelifySans-VariableFont_wght.ttf" id="8_qb3wu"]
 
 [node name="HUD" type="Control" unique_id=998248903]
 z_index = 1000
@@ -13,6 +18,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_1qgl1")
+metadata/_edit_vertical_guides_ = [950.0]
+metadata/_edit_horizontal_guides_ = [149.0]
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=698087041]
 layout_mode = 0
@@ -22,7 +30,7 @@ offset_right = 1038.0
 offset_bottom = 600.0
 nine_patch_stretch = true
 texture_progress = ExtResource("2_lpmwf")
-script = ExtResource("3_lpmwf")
+script = ExtResource("2_efmde")
 
 [node name="Control" type="Control" parent="." unique_id=1381733681]
 anchors_preset = 0
@@ -33,18 +41,18 @@ script = ExtResource("3_27jxx")
 [node name="t1" type="TextureRect" parent="Control" unique_id=793047214]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 749.0
-offset_top = 837.0
-offset_right = 1014.09546
-offset_bottom = 1079.0
+offset_left = 780.0
+offset_top = 843.0
+offset_right = 1045.0955
+offset_bottom = 1085.0
 
 [node name="t2" type="TextureRect" parent="Control" unique_id=77279793]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 825.0
-offset_top = 837.0
-offset_right = 1090.0955
-offset_bottom = 1079.0
+offset_left = 856.0
+offset_top = 843.0
+offset_right = 1121.0955
+offset_bottom = 1085.0
 flip_h = true
 
 [node name="ti1" type="Timer" parent="Control" unique_id=1909674534]
@@ -52,6 +60,30 @@ wait_time = 5.0
 
 [node name="ti2" type="Timer" parent="Control" unique_id=90501249]
 wait_time = 5.0
+
+[node name="ExperienceBar" type="TextureProgressBar" parent="." unique_id=1159295459]
+layout_mode = 0
+offset_left = 620.0
+offset_top = 1085.0
+offset_right = 1282.0
+offset_bottom = 1105.0
+nine_patch_stretch = true
+texture_under = ExtResource("4_61qfh")
+texture_progress = ExtResource("5_efmde")
+script = ExtResource("3_lpmwf")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=786546190]
+layout_mode = 0
+offset_left = 828.0
+offset_top = 71.0
+offset_right = 1072.4
+offset_bottom = 165.0
+theme_override_fonts/normal_font = ExtResource("8_qb3wu")
+bbcode_enabled = true
+text = "[font_size=24]Hello[/font_size]
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="timeout" from="Control/ti1" to="Control" method="_on_ti_1_timeout"]
 [connection signal="timeout" from="Control/ti2" to="Control" method="_on_ti_2_timeout"]

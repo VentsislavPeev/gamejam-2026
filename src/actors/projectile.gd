@@ -16,7 +16,7 @@ func _physics_process(delta: float):
 		sprite.play("fire_arrow")
 	else: sprite.play("normal_arrow")
 	
-	const SPEED = 1000
+	const SPEED = 1200
 	const RANGE = 1200
 	
 	var direction = Vector2.RIGHT.rotated(rotation)
