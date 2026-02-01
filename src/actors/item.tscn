@@ -3,13 +3,13 @@
 [ext_resource type="Script" uid="uid://cptoo6cjyw0t1" path="res://src/actors/item.gd" id="1_672s0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ll3t4"]
-radius = 20.09975
+radius = 29.068884
 
 [node name="Item" type="Area2D" unique_id=584228288]
 script = ExtResource("1_672s0")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1265217392]
-scale = Vector2(3, 3)
+scale = Vector2(12, 12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=182161759]
 shape = SubResource("CircleShape2D_ll3t4")

@@ -9,7 +9,7 @@ var count_hit = 0;
 
 func _physics_process(delta: float):
 	if(player.mask_stack.has(0) && player.mask_stack.has(1)):
-		sprite.play("normal_arrow")
+		sprite.play("earth_fire_arrow")
 	elif(player.mask_stack.has(0)):
 		sprite.play("earth_arrow")
 	elif(player.mask_stack.has(1)):
@@ -34,7 +34,6 @@ func _on_body_entered(body: Node2D) -> void:
 		body.take_fire_dmg()
 		
 	if player.mask_stack.has(0):
-		print("Inside earth")
 		sprite.scale *= 0.7
 		count_hit += 1
 		if count_hit == 3:
