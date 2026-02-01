@@ -46,12 +46,10 @@ func take_fire_dmg(duration: float = 3.0, tick: float = 1.0) -> void:
 	if dot_active:
 		return
 	dot_active = true
+	animated_sprite.play('burning')
 	burning_enemy_sound.play()
-	await get_tree().create_timer(0.1).timeout
+	#await get_tree().create_timer(0.1).timeout
 	print('Burnt')
-	
-	#arrow_fire
-
 	var elapsed := 0.0
 	while elapsed < duration and is_inside_tree():
 		take_dmg() #changeble
