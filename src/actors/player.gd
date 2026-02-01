@@ -104,7 +104,6 @@ func die():
 	game.game_over()
 	queue_free()
 
-
 func perform_dash(dash_direction: Vector2):
 	dashed.emit(dash_cooldown)
 	$HurtBox/CollisionShape2D.disabled = true;

@@ -380,6 +380,55 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcejv"]
+atlas = ExtResource("7_d8py6")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owrex"]
+atlas = ExtResource("7_d8py6")
+region = Rect2(0, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5m0r"]
+atlas = ExtResource("7_d8py6")
+region = Rect2(0, 40, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2d042"]
+atlas = ExtResource("7_d8py6")
+region = Rect2(0, 60, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bixb0"]
+atlas = ExtResource("7_d8py6")
+region = Rect2(0, 80, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u666v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcejv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owrex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5m0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2d042")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bixb0")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
 [node name="Player" type="CharacterBody2D" unique_id=700692499 groups=["player"]]
 z_index = 1
 script = ExtResource("1_gdh0h")
