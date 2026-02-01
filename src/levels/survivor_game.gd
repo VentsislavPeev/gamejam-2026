@@ -62,20 +62,6 @@ func pick_enemy_by_rate() -> PackedScene:
 			return enemy_scenes[i]
 
 	return enemy_scenes.back()
-#func pick_enemy_by_rate() -> PackedScene:
-	#var total := 0.0
-	#for r in spawn_rates:
-		#total += r
-#
-	#var roll := randf() * total
-	#var acc := 0.0
-#
-	#for i in enemy_scenes.size():
-		#acc += spawn_rates[i]
-		#if roll <= acc:
-			#return enemy_scenes[i]
-#
-	#return enemy_scenes.back()
 
 func spawn_mob():
 	var scene := pick_enemy_by_rate()
@@ -108,7 +94,6 @@ func _process(delta: float) -> void:
 		if game_active:
 			elapsed += delta
 		# TODO: add_score(10) при hit на mob
-		# TODO: take_damage(20) при hit
 	
 func toggle_pause() -> void:
 	if get_tree().paused:
