@@ -36,7 +36,7 @@ var can_dash = true
 # ----------------------
 
 var mask_stack: Array = []
-var score = 0
+var player_score = 0
 
 func _ready():
 	mask_stack.append(-1)
@@ -124,12 +124,16 @@ func perform_dash(dash_direction: Vector2):
 func calculate_experience_to_level(level: int) -> float:
 	return (level - 0.5) ** 2 * BASE_LEVEL_XP
 
+
 func gain_experience(exp: int) -> void:
 	var exp_to_level = calculate_experience_to_level(level)
 	experience += exp
 	exp_changed.emit(experience)
 	if experience >= exp_to_level:
 		level_up()
+
+func gain_score(score: int):
+	player_score += score
 
 func level_up():
 	lvlup_animation.play('default')
