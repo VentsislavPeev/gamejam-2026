@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var move_speed := 300.0
 @export var drop_chance := 0.5
 @export var drop_exp := 25
+@export var drop_score := 20
 
 var drop_items = 0
 var health: int
@@ -69,6 +70,7 @@ func take_dmg(amount: int = 1):
 func die():
 	#enemy_kill
 	player.gain_experience(drop_exp)
+	player.gain_score(drop_score)
 	enemy_kill.play()
 	animated_sprite.play('death')
 	await animated_sprite.animation_finished
