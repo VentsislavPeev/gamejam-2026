@@ -110,12 +110,11 @@ func die():
 	is_dead = true
 	animated_sprite.play('die')
 	await animated_sprite.animation_finished
-	print("Animation finished!")   # <--- And this
 	#add die sound
 	#player_death_sound.play()
 	#await sound
+	animated_sprite.play("dead")
 	game.game_over()
-	queue_free()
 
 func perform_dash(dash_direction: Vector2):
 	dashed.emit(dash_cooldown)

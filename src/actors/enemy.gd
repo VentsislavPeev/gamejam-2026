@@ -11,6 +11,7 @@ var health: int
 var dot_active = false;
 var item_scene := preload("res://src/actors/item.tscn")
 var knockback_vector = Vector2.ZERO
+var is_death = false
 
 @onready var player = get_node("/root/Game/Player")
 @onready var main_scene = get_node("/root/Game")
@@ -26,11 +27,15 @@ func _ready():
 	health = max_health
 	
 func _physics_process(delta: float):
+	
+	if is_death:
+		return
+		
 	# 1. Calculate direction once
 	var direction_to_player = global_position.direction_to(player.global_position)
 	
 	# 2. Handle sprite flipping
-	animated_sprite.flip_h = direction_to_player.x < 0
+	animated_sprite.flip_h = direction_to_player.x > 0
 	
 	# 3. Combine normal movement AND knockback
 	var normal_velocity = direction_to_player * move_speed
@@ -42,14 +47,14 @@ func _physics_process(delta: float):
 	# 5. Decay knockback over time
 	if knockback_vector != Vector2.ZERO:
 		knockback_vector = knockback_vector.move_toward(Vector2.ZERO, 500 * delta)
+		
 func take_fire_dmg(duration: float = 3.0, tick: float = 1.0) -> void:
 	if dot_active:
 		return
 	dot_active = true
 	animated_sprite.play('burning')
 	burning_enemy_sound.play()
-	#await get_tree().create_timer(0.1).timeout
-	print('Burnt')
+
 	var elapsed := 0.0
 	while elapsed < duration and is_inside_tree():
 		take_dmg() #changeble
@@ -73,6 +78,7 @@ func take_dmg(amount: int = 1):
 
 func die():
 	#enemy_kill
+	is_death = true
 	player.gain_experience(drop_exp)
 	player.gain_score(drop_score)
 	enemy_kill_sound.play()

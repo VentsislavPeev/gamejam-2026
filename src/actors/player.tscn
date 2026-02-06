@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bbo7hwjyvwya4" path="res://src/actors/weapon.tscn" id="3_foe4e"]
 [ext_resource type="Texture2D" uid="uid://c1kb2ai07fw5x" path="res://assets/sprites/mc_hurt_anim.png" id="3_l3h4q"]
 [ext_resource type="Texture2D" uid="uid://bhknlwd6cl13n" path="res://assets/sprites/mc_death_anim.png" id="3_urqtb"]
-[ext_resource type="PackedScene" path="res://assets/themes/hud.tscn" id="6_1e0ww"]
+[ext_resource type="PackedScene" uid="uid://de28liwa3olvy" path="res://assets/themes/hud.tscn" id="6_1e0ww"]
 [ext_resource type="Texture2D" uid="uid://dwx2gmiuvtj4t" path="res://assets/sprites/lvlup.png" id="7_d8py6"]
 [ext_resource type="AudioStream" uid="uid://jacosxfha2gp" path="res://audio/sfx/player_dash.wav" id="10_olup0"]
 [ext_resource type="AudioStream" uid="uid://ctj387lwpaxdl" path="res://audio/sfx/player_death.wav" id="11_l81xe"]
@@ -55,6 +55,10 @@ region = Rect2(0, 256, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_qcjvn"]
 atlas = ExtResource("2_1oxso")
 region = Rect2(0, 288, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtsme"]
+atlas = ExtResource("3_urqtb")
+region = Rect2(0, 420, 32, 28)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jfnme"]
 atlas = ExtResource("3_urqtb")
@@ -215,6 +219,14 @@ animations = [{
 }],
 "loop": false,
 "name": &"dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mtsme")
+}],
+"loop": true,
+"name": &"dead",
 "speed": 5.0
 }, {
 "frames": [{
@@ -402,10 +414,8 @@ process_mode = 3
 position = Vector2(0.9999924, -68)
 scale = Vector2(5.840909, 5.840909)
 sprite_frames = SubResource("SpriteFrames_l3h4q")
-animation = &"shoot"
+animation = &"dead"
 autoplay = "shoot"
-frame = 13
-frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=470462921]
 position = Vector2(0, 71)
