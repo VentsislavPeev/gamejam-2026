@@ -158,7 +158,6 @@ shape = SubResource("CircleShape2D_pdfo5")
 position = Vector2(11, -85.00001)
 scale = Vector2(14, 14)
 sprite_frames = SubResource("SpriteFrames_xwthg")
-animation = &"death"
 autoplay = "default"
 flip_h = true
 
