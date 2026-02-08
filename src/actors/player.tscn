@@ -419,12 +419,14 @@ autoplay = "shoot"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=470462921]
 position = Vector2(0, 71)
+zoom = Vector2(0.5, 0.5)
 
 [node name="HUD" parent="Camera2D" unique_id=998248903 instance=ExtResource("6_1e0ww")]
-offset_left = -955.0
-offset_top = -616.0
-offset_right = -955.0
-offset_bottom = -616.0
+offset_left = -1902.0
+offset_top = -1209.0
+offset_right = -1902.0
+offset_bottom = -1209.0
+scale = Vector2(2, 2)
 
 [node name="LVL_UP" type="Control" parent="Camera2D" unique_id=1938602506]
 layout_mode = 3
